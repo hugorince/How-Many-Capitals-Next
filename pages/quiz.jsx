@@ -1,12 +1,18 @@
 import Link from "next/link";
-import QuizBoxBuilder from "./components/QuizBoxBuilder";
+import QuizBoxesBuilder from "./components/QuizBoxBuilder";
 import { useState, useContext, useEffect, useCallback } from "react";
 import { DifficultyContext } from "./components/DifficultyContext";
-import { capitals, cities } from "@/utils/citiesData";
-import Loose from "./components/loose";
+import { capitals } from "@/utils/citiesData";
 import { createAnswer, buildChoices } from "@/utils/quizLogic";
+import Loose from "./components/loose";
+import { supabase } from "@/supabase";
 
 export default function Quiz() {
+  const [highscore, setHighscore] = useState({
+    player: "",
+    difficulty: "",
+    highscore: "",
+  });
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
   const [answer, setAnswer] = useState({
     capital: "",
@@ -17,6 +23,11 @@ export default function Quiz() {
   const [score, setScore] = useState(0);
   const [loose, setLoose] = useState(false);
   const countryArray = Object.keys(capitals);
+
+  const fetchHighScores = async () => {
+    const { data, error } = await supabase.from("highscores").select("score");
+    console.log({ data });
+  };
 
   const handleChoiceClicked = useCallback(
     (v) => {
@@ -33,6 +44,7 @@ export default function Quiz() {
   );
 
   useEffect(() => {
+    fetchHighScores();
     createAnswer(countryArray, alreadyGuessed, setAnswer);
   }, []);
 
@@ -46,7 +58,7 @@ export default function Quiz() {
         <div className="flex flex-col space-y-8 h-screen w-screen items-center place-content-center">
           <h1 className="font-bold">What is the capital of {answer.country}</h1>
           <div>
-            <QuizBoxBuilder
+            <QuizBoxesBuilder
               choices={choices}
               handleChoiceClicked={handleChoiceClicked}
             />

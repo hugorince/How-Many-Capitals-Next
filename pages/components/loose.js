@@ -4,7 +4,7 @@ export default function Loose({ score }) {
   return (
     <>
       <div className="flex flex-col space-y-4 place-content-center items-center h-screen w-screen">
-        <div>you loose</div>
+        <div>Oh no, you've lost 😞</div>
         <div>Your score is {score}</div>
         <Link
           href={"/"}
