@@ -5,9 +5,10 @@ import { DifficultyContext } from "../utils/DifficultyContext";
 import { capitals } from "@/utils/citiesData";
 import { createAnswer, buildChoices } from "@/utils/quizLogic";
 import Loose from "./components/Loose";
-import { fetchHighScores } from "./api/crud";
 import NewHighScore from "./components/NewHighScore";
 import { HighScoreContext } from "@/utils/HighScoreContext";
+import HighscoreQuizDisplay from "./components/HighscoreQuizDisplay";
+import Bonuses from "./components/Bonuses/Bonuses";
 
 export default function Quiz() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
@@ -31,10 +32,20 @@ export default function Quiz() {
         createAnswer(countryArray, alreadyGuessed, setAnswer);
       } else {
         setLoose(true);
+        setAlreadyGuessed([]);
       }
     },
     [alreadyGuessed, answer]
   );
+
+  // // const handleFiftyFifty = (difficulty) => {
+  // //   if (difficulty === "easy") {
+  // //     setChoices([answer.capital, choices[0]]);
+  // //     console.log(choices);
+  // //   }
+
+  //   setChoices();
+  // };
 
   useEffect(() => {
     createAnswer(countryArray, alreadyGuessed, setAnswer);
@@ -47,11 +58,13 @@ export default function Quiz() {
   return (
     <>
       {!loose ? (
-        <div className="flex flex-col space-y-8 h-screen w-screen items-center place-content-center">
-          <div>
-            Highscore in {difficulty} is {highscores.easy.score} by{" "}
-            {highscores.easy.name}
-          </div>
+        <div className="flex flex-col space-y-8 h-screen w-screen items-center place-content-center p-4">
+          <HighscoreQuizDisplay />
+          <Bonuses
+            setFiftyFifty={handleFiftyFifty}
+            setShuffle={() => {}}
+            setSkip={() => {}}
+          />
           <h1 className="font-bold">What is the capital of {answer.country}</h1>
           <div>
             <QuizBoxesBuilder
@@ -60,7 +73,9 @@ export default function Quiz() {
             />
           </div>
           <div>Your streak is : {score}</div>
-          <Link href="/">Home Page</Link>
+          <Link href="/" className="border border-black rounded p-1">
+            Home Page
+          </Link>
         </div>
       ) : difficulty === "easy" && score > highscores.easy.score ? (
         <NewHighScore score={score} />

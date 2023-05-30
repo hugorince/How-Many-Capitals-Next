@@ -3,7 +3,7 @@ import QuizBox from "./QuizBox";
 export default function QuizBoxesBuilder({ choices, handleChoiceClicked }) {
   return (
     <>
-      <div className="flex space-x-2">
+      <div className="flex flex-col space-y-2">
         {choices.map((item, i) => {
           return (
             <>
