@@ -9,6 +9,7 @@ import NewHighScore from "./components/NewHighScore";
 import { HighScoreContext } from "@/utils/HighScoreContext";
 import HighscoreQuizDisplay from "./components/HighscoreQuizDisplay";
 import Bonuses from "./components/Bonuses/Bonuses";
+import shuffle from "@/utils/shuffle";
 
 export default function Quiz() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
@@ -23,6 +24,8 @@ export default function Quiz() {
   const [loose, setLoose] = useState(false);
   const countryArray = Object.keys(capitals);
 
+  const [fiftyFifty, setFiftyFifty] = useState(false);
+
   const handleChoiceClicked = useCallback(
     (v) => {
       const clicked = v.target.value;
@@ -33,19 +36,34 @@ export default function Quiz() {
       } else {
         setLoose(true);
         setAlreadyGuessed([]);
+        setFiftyFifty(false);
       }
     },
     [alreadyGuessed, answer]
   );
 
-  // // const handleFiftyFifty = (difficulty) => {
-  // //   if (difficulty === "easy") {
-  // //     setChoices([answer.capital, choices[0]]);
-  // //     console.log(choices);
-  // //   }
-
-  //   setChoices();
-  // };
+  const handleFiftyFifty = (difficulty) => {
+    console.log("difficulty = ", difficulty);
+    const newChoices = choices.filter((choice) => choice !== answer.capital);
+    const shuffledNewChoices = shuffle(newChoices);
+    if (difficulty === "easy") {
+      setChoices(() => shuffle([answer.capital, shuffledNewChoices[0]]));
+    } else if (difficulty === "medium") {
+      setChoices(() =>
+        shuffle([answer.capital, shuffledNewChoices[0], shuffledNewChoices[1]])
+      );
+    } else if (difficulty === "hard") {
+      setChoices(() =>
+        shuffle([
+          answer.capital,
+          shuffledNewChoices[0],
+          shuffledNewChoices[1],
+          shuffledNewChoices[2],
+        ])
+      );
+    }
+    setFiftyFifty(true);
+  };
 
   useEffect(() => {
     createAnswer(countryArray, alreadyGuessed, setAnswer);
@@ -61,7 +79,10 @@ export default function Quiz() {
         <div className="flex flex-col space-y-8 h-screen w-screen items-center place-content-center p-4">
           <HighscoreQuizDisplay />
           <Bonuses
-            setFiftyFifty={handleFiftyFifty}
+            setFiftyFifty={() => {
+              handleFiftyFifty(difficulty);
+            }}
+            fiftyFifty={fiftyFifty}
             setShuffle={() => {}}
             setSkip={() => {}}
           />
