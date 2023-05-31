@@ -4,14 +4,10 @@ export default function QuizBoxesBuilder({ choices, handleChoiceClicked }) {
   return (
     <>
       <div className="flex flex-col space-y-2">
-        {choices.map((item, i) => {
+        {choices.map((item) => {
           return (
             <>
-              <QuizBox
-                value={item}
-                handleChoiceClicked={handleChoiceClicked}
-                key={i}
-              />
+              <QuizBox value={item} handleChoiceClicked={handleChoiceClicked} />
             </>
           );
         })}

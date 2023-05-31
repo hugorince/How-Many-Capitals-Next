@@ -10,6 +10,7 @@ import { HighScoreContext } from "@/utils/HighScoreContext";
 import HighscoreQuizDisplay from "./components/HighscoreQuizDisplay";
 import Bonuses from "./components/Bonuses/Bonuses";
 import { handleFiftyFifty } from "@/utils/bonusesLogic";
+import { setVisibility } from "@/utils/domModification";
 
 export default function Quiz() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
@@ -33,6 +34,7 @@ export default function Quiz() {
     (v) => {
       const clicked = v.target.value;
       if (clicked === answer.capital) {
+        setVisibility();
         setScore(score + 1);
         setAlreadyGuessed((prev) => [...prev, clicked]);
         createAnswer(countryArray, alreadyGuessed, setAnswer);
@@ -60,14 +62,7 @@ export default function Quiz() {
           <Bonuses
             bonus={bonus}
             setBonus={() => {
-              handleFiftyFifty(
-                difficulty,
-                choices,
-                setChoices,
-                setBonus,
-                bonus,
-                answer
-              );
+              handleFiftyFifty(difficulty, answer, setBonus, bonus);
             }}
             setSkip={() => {
               setBonus({
