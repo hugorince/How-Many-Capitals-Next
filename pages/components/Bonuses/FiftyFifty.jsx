@@ -1,8 +1,8 @@
-export default function FiftyFifty({ fiftyFifty, setFiftyFifty }) {
-  if (fiftyFifty === false) {
+export default function FiftyFifty({ bonus, setBonus }) {
+  if (bonus.fifty === false) {
     return (
       <>
-        <button onClick={setFiftyFifty}>50/50</button>
+        <button onClick={setBonus}>50/50</button>
       </>
     );
   } else
