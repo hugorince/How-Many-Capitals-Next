@@ -1,4 +1,11 @@
-export default function FiftyFifty({ bonus, setBonus }) {
+type FiftyFiftyProps = {
+  bonus: {
+    fifty: boolean;
+  };
+  setBonus: () => void;
+};
+
+export default function FiftyFifty({ bonus, setBonus }: FiftyFiftyProps) {
   if (bonus.fifty === false) {
     return (
       <>

@@ -2,7 +2,23 @@ import FiftyFifty from "./FiftyFifty";
 import Shuffle from "./Shuffle";
 import Skip from "./Skip";
 
-export default function Bonuses({ bonus, setBonus, setSkip, setShuffle }) {
+type BonusesProps = {
+  bonus: {
+    fifty: boolean;
+    shuffle: boolean;
+    skip: boolean;
+  };
+  setBonus: () => void;
+  setSkip: () => void;
+  setShuffle: () => void;
+};
+
+export default function Bonuses({
+  bonus,
+  setBonus,
+  setSkip,
+  setShuffle,
+}: BonusesProps) {
   return (
     <>
       <div className="flex space-x-2">

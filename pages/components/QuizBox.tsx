@@ -1,4 +1,9 @@
-export default function QuizBox({ value, handleChoiceClicked }) {
+type QuizBoxProps = {
+  value: string;
+  handleChoiceClicked: (c: any) => void;
+};
+
+export default function QuizBox({ value, handleChoiceClicked }: QuizBoxProps) {
   return (
     <>
       <div className="button-question" id={value}>

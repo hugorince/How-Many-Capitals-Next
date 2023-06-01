@@ -4,12 +4,16 @@ import { DifficultyContext } from "../../utils/DifficultyContext";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
 
-export default function NewHighScore({ score }) {
+type NewHighScoreProps = {
+  score: number;
+};
+
+export default function NewHighScore({ score }: NewHighScoreProps) {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
   const [name, setName] = useState<string>("");
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     await insertScore({ score, name, difficulty });
     router.push("/");

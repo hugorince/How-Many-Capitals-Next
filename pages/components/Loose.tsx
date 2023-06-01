@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export default function Loose({ score }) {
+type LooseProps = {
+  score: number;
+};
+
+export default function Loose({ score }: LooseProps) {
   return (
     <>
       <div className="flex flex-col space-y-4 place-content-center items-center h-screen w-screen">

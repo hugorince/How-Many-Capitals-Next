@@ -1,5 +1,10 @@
 import QuizBox from "./QuizBox";
 
+type QuizBoxBuilderProps = {
+  choices: string[];
+  handleChoiceClicked: () => void;
+};
+
 export default function QuizBoxesBuilder({ choices, handleChoiceClicked }) {
   return (
     <>

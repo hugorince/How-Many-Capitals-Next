@@ -1,4 +1,11 @@
-export default function Shuffle({ setShuffle, bonus }) {
+type ShuffleProps = {
+  bonus: {
+    shuffle: boolean;
+  };
+  setShuffle: () => void;
+};
+
+export default function Shuffle({ setShuffle, bonus }: ShuffleProps) {
   if (bonus.shuffle === false) {
     return (
       <>
