@@ -6,12 +6,12 @@ import { useRouter } from "next/navigation";
 
 export default function NewHighScore({ score }) {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
-  const [name, setName] = useState("");
+  const [name, setName] = useState<string>("");
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await insertScore(score, name, difficulty);
+    await insertScore({ score, name, difficulty });
     router.push("/");
   };
 
@@ -35,7 +35,7 @@ export default function NewHighScore({ score }) {
             placeholder="enter your name"
           />
           <button
-            type="Submit"
+            //type="Submit"
             className="border border-black p-2 rounded hover:bg-black hover:text-white"
           >
             Send

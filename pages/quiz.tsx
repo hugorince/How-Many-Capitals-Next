@@ -15,20 +15,24 @@ import { setVisibility } from "../utils/domModification";
 export default function Quiz() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
   const { highscores, setHighScores } = useContext(HighScoreContext);
-  const [answer, setAnswer] = useState({
+  const [answer, setAnswer] = useState<{ capital: string; country: string }>({
     capital: "",
     country: "",
   });
-  const [choices, setChoices] = useState([]);
-  const [alreadyGuessed, setAlreadyGuessed] = useState([]);
-  const [score, setScore] = useState(0);
-  const [bonus, setBonus] = useState({
+  const [choices, setChoices] = useState<string[]>([]);
+  const [alreadyGuessed, setAlreadyGuessed] = useState<string[]>([]);
+  const [score, setScore] = useState<number>(0);
+  const [bonus, setBonus] = useState<{
+    fifty: boolean;
+    skip: boolean;
+    shuffle: boolean;
+  }>({
     fifty: false,
     skip: false,
     shuffle: false,
   });
-  const [loose, setLoose] = useState(false);
-  const countryArray = Object.keys(capitals);
+  const [loose, setLoose] = useState<boolean>(false);
+  const countryArray: string[] = Object.keys(capitals);
 
   const handleChoiceClicked = useCallback(
     (v) => {

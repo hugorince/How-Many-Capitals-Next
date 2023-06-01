@@ -1,6 +1,6 @@
-import { supabase } from "/supabase";
+import { supabase } from "../../supabase";
 
-export const fetchHighScores = async (setHighscores) => {
+export const fetchHighScores = async (setHighscores: any) => {
   const { data, error } = await supabase
     .from("highscores")
     .select("score, name, difficulty")
@@ -28,7 +28,17 @@ export const fetchHighScores = async (setHighscores) => {
   });
 };
 
-export const insertScore = async (score, name, difficulty) => {
+type insertScoreTypes = {
+  score: number;
+  name: string;
+  difficulty: string;
+};
+
+export const insertScore = async ({
+  score,
+  name,
+  difficulty,
+}: insertScoreTypes) => {
   const { data, error } = await supabase
     .from("highscores")
     .insert([{ name: name, score: score, difficulty: difficulty }]);
