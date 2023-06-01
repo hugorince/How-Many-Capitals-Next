@@ -1,11 +1,11 @@
-import "@/styles/globals.css";
-import { useState } from "react";
+import React, { useState } from "react";
+import "../styles/globals.css";
 import { DifficultyContext } from "../utils/DifficultyContext";
-import { HighScoreContext } from "@/utils/HighScoreContext";
+import { HighScoreContext } from "../utils/HighScoreContext";
 
 export default function App({ Component, pageProps }) {
-  const [difficulty, setDifficulty] = useState("easy");
-  const [highscores, setHighScores] = useState({
+  const [difficulty, setDifficulty] = useState<string>("easy");
+  const [highscores, setHighScores] = useState<any>({
     easy: {
       name: "",
       score: null,
@@ -19,6 +19,7 @@ export default function App({ Component, pageProps }) {
       score: null,
     },
   });
+
   return (
     <>
       <DifficultyContext.Provider value={{ difficulty, setDifficulty }}>

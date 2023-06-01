@@ -1,4 +1,4 @@
-import { supabase } from "@/supabase";
+import { supabase } from "/supabase";
 
 export const fetchHighScores = async (setHighscores) => {
   const { data, error } = await supabase

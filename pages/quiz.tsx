@@ -2,15 +2,15 @@ import Link from "next/link";
 import QuizBoxesBuilder from "./components/QuizBoxBuilder";
 import { useState, useContext, useEffect, useCallback } from "react";
 import { DifficultyContext } from "../utils/DifficultyContext";
-import { capitals } from "@/utils/citiesData";
-import { createAnswer, buildChoices } from "@/utils/quizLogic";
+import { capitals } from "../utils/citiesData";
+import { createAnswer, buildChoices } from "../utils/quizLogic";
 import Loose from "./components/Loose";
 import NewHighScore from "./components/NewHighScore";
-import { HighScoreContext } from "@/utils/HighScoreContext";
+import { HighScoreContext } from "../utils/HighScoreContext";
 import HighscoreQuizDisplay from "./components/HighscoreQuizDisplay";
 import Bonuses from "./components/Bonuses/Bonuses";
-import { handleFiftyFifty } from "@/utils/bonusesLogic";
-import { setVisibility } from "@/utils/domModification";
+import { handleFiftyFifty } from "../utils/bonusesLogic";
+import { setVisibility } from "../utils/domModification";
 
 export default function Quiz() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
@@ -37,7 +37,7 @@ export default function Quiz() {
         setVisibility();
         setScore(score + 1);
         setAlreadyGuessed((prev) => [...prev, clicked]);
-        createAnswer(countryArray, alreadyGuessed, setAnswer);
+        createAnswer({ countryArray, alreadyGuessed, setAnswer });
       } else {
         setLoose(true);
         setAlreadyGuessed([]);
@@ -47,11 +47,11 @@ export default function Quiz() {
   );
 
   useEffect(() => {
-    createAnswer(countryArray, alreadyGuessed, setAnswer);
+    createAnswer({ countryArray, alreadyGuessed, setAnswer });
   }, [bonus.skip]);
 
   useEffect(() => {
-    buildChoices(difficulty, answer, setChoices);
+    buildChoices({ difficulty, answer, setChoices });
   }, [answer, highscores, bonus.shuffle]);
 
   return (
@@ -62,7 +62,7 @@ export default function Quiz() {
           <Bonuses
             bonus={bonus}
             setBonus={() => {
-              handleFiftyFifty(difficulty, answer, setBonus, bonus);
+              handleFiftyFifty({ difficulty, answer, setBonus, bonus });
             }}
             setSkip={() => {
               setBonus({

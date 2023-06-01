@@ -1,12 +1,23 @@
-import { capitals, cities } from "@/utils/citiesData";
+import { capitals, cities } from "./citiesData";
 import shuffle from "./shuffle";
 
-const countryArray = Object.keys(capitals);
-const capitalsArray = Object.values(capitals);
-const allCities = [...cities, ...capitalsArray];
+const countryArray: Array<string> = Object.keys(capitals);
+const capitalsArray: Array<string> = Object.values(capitals);
+const allCities: Array<string> = [...cities, ...capitalsArray];
 
-export const createAnswer = (countryArray, alreadyGuessed, setAnswer) => {
-  const country = countryArray[Math.floor(Math.random() * countryArray.length)];
+type createAnswerTypes = {
+  countryArray: Array<string>;
+  alreadyGuessed: Array<string>;
+  setAnswer: any;
+};
+
+export const createAnswer = ({
+  countryArray,
+  alreadyGuessed,
+  setAnswer,
+}: createAnswerTypes) => {
+  const country: string =
+    countryArray[Math.floor(Math.random() * countryArray.length)];
   if (!alreadyGuessed.includes(capitals[country])) {
     setAnswer(() => {
       return {
@@ -15,11 +26,27 @@ export const createAnswer = (countryArray, alreadyGuessed, setAnswer) => {
       };
     });
   } else {
-    createAnswer();
+    createAnswer({
+      countryArray,
+      alreadyGuessed,
+      setAnswer,
+    });
   }
 };
 
-export const buildChoices = (difficulty, answer, setChoices) => {
+type buildChoicesTypes = {
+  difficulty: string;
+  answer: {
+    capital: string;
+  };
+  setChoices: any;
+};
+
+export const buildChoices = ({
+  difficulty,
+  answer,
+  setChoices,
+}: buildChoicesTypes) => {
   const cities2 = shuffle([...allCities]);
   if (difficulty === "easy") {
     const choicesTemp = [answer.capital, cities2[0], cities2[1], cities2[2]];
