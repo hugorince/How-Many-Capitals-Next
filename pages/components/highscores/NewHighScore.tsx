@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { insertScore } from "../api/crud";
-import { DifficultyContext } from "../../utils/DifficultyContext";
+import { insertScore } from "../../api/crud";
+import { DifficultyContext } from "../difficulty/DifficultyContext";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
 
@@ -10,7 +10,7 @@ type NewHighScoreProps = {
 
 export default function NewHighScore({ score }: NewHighScoreProps) {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
-  const [name, setName] = useState<string>("");
+  const [name, setName] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e: any) => {

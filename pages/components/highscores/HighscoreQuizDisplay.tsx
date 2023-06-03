@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { DifficultyContext } from "../../utils/DifficultyContext";
-import { HighScoreContext } from "../../utils/HighScoreContext";
+import { DifficultyContext } from "../difficulty/DifficultyContext";
+import { HighScoreContext } from "./HighScoreContext";
+
 export default function HighscoreQuizDisplay() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
   const { highscores, setHighScores } = useContext(HighScoreContext);

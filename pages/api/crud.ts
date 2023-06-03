@@ -1,6 +1,6 @@
 import { supabase } from "../../supabase";
 
-export const fetchHighScores = async (setHighscores: any) => {
+export const fetchHighScores = async (setHighScores) => {
   const { data, error } = await supabase
     .from("highscores")
     .select("score, name, difficulty")
@@ -10,7 +10,7 @@ export const fetchHighScores = async (setHighscores: any) => {
   const medium = data.filter((item) => item.difficulty === "medium");
   const hard = data.filter((item) => item.difficulty === "hard");
 
-  setHighscores(() => {
+  setHighScores(() => {
     return {
       easy: {
         name: easy[0].name,

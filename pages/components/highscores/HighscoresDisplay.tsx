@@ -1,4 +1,4 @@
-import { HighScoreContext } from "../../utils/HighScoreContext";
+import { HighScoreContext } from "./HighScoreContext";
 import { useContext } from "react";
 
 export default function HighscoreDisplay() {

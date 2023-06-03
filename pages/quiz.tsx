@@ -1,16 +1,16 @@
 import Link from "next/link";
-import QuizBoxesBuilder from "./components/QuizBoxBuilder";
+import QuizBoxesBuilder from "./components/quiz/QuizBoxBuilder";
 import { useState, useContext, useEffect, useCallback } from "react";
-import { DifficultyContext } from "../utils/DifficultyContext";
-import { capitals } from "../utils/citiesData";
-import { createAnswer, buildChoices } from "../utils/quizLogic";
-import Loose from "./components/Loose";
-import NewHighScore from "./components/NewHighScore";
-import { HighScoreContext } from "../utils/HighScoreContext";
-import HighscoreQuizDisplay from "./components/HighscoreQuizDisplay";
+import { DifficultyContext } from "./components/difficulty/DifficultyContext";
+import { capitals } from "./components/quiz/citiesData";
+import { createAnswer, buildChoices } from "./components/quiz/quizLogic";
+import Loose from "./components/quiz/Loose";
+import NewHighScore from "./components/highscores/NewHighScore";
+import { HighScoreContext } from "./components/highscores/HighScoreContext";
+import HighscoreQuizDisplay from "./components/highscores/HighscoreQuizDisplay";
 import Bonuses from "./components/Bonuses/Bonuses";
-import { handleFiftyFifty } from "../utils/bonusesLogic";
-import { setVisibility } from "../utils/domModification";
+import { handleFiftyFifty } from "./components/Bonuses/bonusesLogic";
+import { setVisibility } from "../utils/setVisibility";
 
 export default function Quiz() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
@@ -21,7 +21,7 @@ export default function Quiz() {
   });
   const [choices, setChoices] = useState<string[]>([]);
   const [alreadyGuessed, setAlreadyGuessed] = useState<string[]>([]);
-  const [score, setScore] = useState<number>(0);
+  const [score, setScore] = useState(0);
   const [bonus, setBonus] = useState<{
     fifty: boolean;
     skip: boolean;
@@ -31,8 +31,8 @@ export default function Quiz() {
     skip: false,
     shuffle: false,
   });
-  const [loose, setLoose] = useState<boolean>(false);
-  const countryArray: string[] = Object.keys(capitals);
+  const [loose, setLoose] = useState(false);
+  const countryArray = Object.keys(capitals);
 
   const handleChoiceClicked = useCallback(
     (v) => {
@@ -69,6 +69,7 @@ export default function Quiz() {
               handleFiftyFifty({ difficulty, answer, setBonus, bonus });
             }}
             setSkip={() => {
+              setVisibility();
               setBonus({
                 fifty: bonus.fifty,
                 skip: true,

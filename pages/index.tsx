@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { useContext, useEffect } from "react";
-import SetDifficulty from "./components/SetDifficulty";
-import { HighScoreContext } from "../utils/HighScoreContext";
+import SetDifficulty from "./components/difficulty/SetDifficulty";
+import { HighScoreContext } from "./components/highscores/HighScoreContext";
 import { fetchHighScores } from "./api/crud";
-import HighscoreDisplay from "./components/HighscoresDisplay";
+import HighscoreDisplay from "./components/highscores/HighscoresDisplay";
+import type { HighScoreContextTypes } from "./components/highscores/HighScoreContext";
 
 export default function Home() {
   const { highscores, setHighScores } = useContext(HighScoreContext);
