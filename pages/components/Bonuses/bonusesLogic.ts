@@ -11,6 +11,7 @@ type handleFiftyFiftyTypes = {
     skip: boolean;
     shuffle: boolean;
   };
+  buttonRef: any;
 };
 
 export const handleFiftyFifty = ({
@@ -18,12 +19,14 @@ export const handleFiftyFifty = ({
   answer,
   setBonus,
   bonus,
+  buttonRef,
 }: handleFiftyFiftyTypes) => {
-  const elements = document.querySelectorAll(".button-question");
+  const elements = buttonRef.current.children;
   const elementsArray: { id: string; style: { visibility: string } }[] =
     Array.prototype.slice.call(elements);
   const elementsShuffled: { id: string; style: { visibility: string } }[] =
     shuffle(elementsArray);
+
   let diffNum = 0;
   let hidden = 0;
   if (difficulty === "easy") {

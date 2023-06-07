@@ -13,11 +13,11 @@ export default function GameOver() {
   return (
     <>
       {difficulty === "easy" && score > highscores.easy.score ? (
-        <NewHighScore score={score} />
+        <NewHighScore />
       ) : difficulty === "medium" && score > highscores.medium.score ? (
-        <NewHighScore score={score} />
+        <NewHighScore />
       ) : difficulty === "hard" && score > highscores.hard.score ? (
-        <NewHighScore score={score} />
+        <NewHighScore />
       ) : (
         <Loose />
       )}
