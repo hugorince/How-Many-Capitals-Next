@@ -10,12 +10,14 @@ import { handleFiftyFifty } from "./components/Bonuses/bonusesLogic";
 import { setVisibility } from "../utils/setVisibility";
 import { useRouter } from "next/router";
 import { ScoreContext } from "./components/quiz/ScoreContext";
+import { ButtonRefContext } from "./components/quiz/ButtonRefContext";
 
 export default function Quiz() {
   const router = useRouter();
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
   const { highscores, setHighScores } = useContext(HighScoreContext);
   const { score, setScore } = useContext(ScoreContext);
+  const { buttonRef } = useContext(ButtonRefContext);
 
   const [answer, setAnswer] = useState({
     capital: "",
@@ -33,7 +35,7 @@ export default function Quiz() {
     (v) => {
       const clicked = v.target.value;
       if (clicked === answer.capital) {
-        setVisibility();
+        setVisibility(buttonRef);
         setScore(score + 1);
         setAlreadyGuessed((prev) => [...prev, clicked]);
         createAnswer({ alreadyGuessed, setAnswer });
@@ -60,10 +62,16 @@ export default function Quiz() {
         <Bonuses
           bonus={bonus}
           setFifty={() => {
-            handleFiftyFifty({ difficulty, answer, setBonus, bonus });
+            handleFiftyFifty({
+              difficulty,
+              answer,
+              setBonus,
+              bonus,
+              buttonRef,
+            });
           }}
           setSkip={() => {
-            setVisibility();
+            setVisibility(buttonRef);
             setBonus({
               fifty: bonus.fifty,
               skip: true,

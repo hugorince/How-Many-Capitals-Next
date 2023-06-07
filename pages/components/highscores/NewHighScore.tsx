@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { insertScore } from "../../api/crud";
 import { DifficultyContext } from "../difficulty/DifficultyContext";
-import { useContext } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { ScoreContext } from "../quiz/ScoreContext";
 
-type NewHighScoreProps = {
-  score: number;
-};
-
-export default function NewHighScore({ score }: NewHighScoreProps) {
+export default function NewHighScore() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
+  const { score, setScore } = useContext(ScoreContext);
   const [name, setName] = useState("");
   const router = useRouter();
 
@@ -17,6 +15,10 @@ export default function NewHighScore({ score }: NewHighScoreProps) {
     e.preventDefault();
     await insertScore({ score, name, difficulty });
     router.push("/");
+  };
+
+  const handleClick = () => {
+    setScore(0);
   };
 
   return (
@@ -45,6 +47,13 @@ export default function NewHighScore({ score }: NewHighScoreProps) {
             Send
           </button>
         </form>
+        <Link
+          href={"/"}
+          className="border border-black p-2 rounded hover:bg-black hover:text-white"
+          onClick={handleClick}
+        >
+          Play again ?
+        </Link>
       </div>
     </>
   );
