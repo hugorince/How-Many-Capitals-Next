@@ -1,4 +1,4 @@
-import shuffle from "./shuffle";
+import shuffle from "../../../utils/shuffle";
 
 type handleFiftyFiftyTypes = {
   difficulty: string;
@@ -19,14 +19,13 @@ export const handleFiftyFifty = ({
   setBonus,
   bonus,
 }: handleFiftyFiftyTypes) => {
-  const elements: NodeListOf<Element> =
-    document.querySelectorAll(".button-question");
+  const elements = document.querySelectorAll(".button-question");
   const elementsArray: { id: string; style: { visibility: string } }[] =
     Array.prototype.slice.call(elements);
   const elementsShuffled: { id: string; style: { visibility: string } }[] =
     shuffle(elementsArray);
-  let diffNum: number = 0;
-  let hidden: number = 0;
+  let diffNum = 0;
+  let hidden = 0;
   if (difficulty === "easy") {
     diffNum = 2;
   } else if (difficulty === "medium") {

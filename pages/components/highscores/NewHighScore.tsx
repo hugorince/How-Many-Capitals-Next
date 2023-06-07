@@ -1,17 +1,21 @@
 import { useState } from "react";
-import { insertScore } from "../api/crud";
-import { DifficultyContext } from "../../utils/DifficultyContext";
+import { insertScore } from "../../api/crud";
+import { DifficultyContext } from "../difficulty/DifficultyContext";
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
 
-export default function NewHighScore({ score }) {
+type NewHighScoreProps = {
+  score: number;
+};
+
+export default function NewHighScore({ score }: NewHighScoreProps) {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
   const [name, setName] = useState("");
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await insertScore(score, name, difficulty);
+    await insertScore({ score, name, difficulty });
     router.push("/");
   };
 
@@ -35,7 +39,7 @@ export default function NewHighScore({ score }) {
             placeholder="enter your name"
           />
           <button
-            type="Submit"
+            //type="Submit"
             className="border border-black p-2 rounded hover:bg-black hover:text-white"
           >
             Send

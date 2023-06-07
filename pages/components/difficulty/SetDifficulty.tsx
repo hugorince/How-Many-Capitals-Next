@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DifficultyContext } from "../../utils/DifficultyContext";
+import { DifficultyContext } from "./DifficultyContext";
 
 export default function setDifficulty() {
   const { difficulty, setDifficulty } = useContext(DifficultyContext);
