@@ -1,23 +1,20 @@
 import { capitals, cities } from "./citiesData";
 import shuffle from "../../../utils/shuffle";
 
-const countryArray: Array<string> = Object.keys(capitals);
-const capitalsArray: Array<string> = Object.values(capitals);
-const allCities: Array<string> = [...cities, ...capitalsArray];
+const countryArray: string[] = Object.keys(capitals);
+const capitalsArray: string[] = Object.values(capitals);
+const allCities: string[] = [...cities, ...capitalsArray];
 
 type createAnswerTypes = {
-  countryArray: Array<string>;
-  alreadyGuessed: Array<string>;
+  alreadyGuessed: string[];
   setAnswer: any;
 };
 
 export const createAnswer = ({
-  countryArray,
   alreadyGuessed,
   setAnswer,
 }: createAnswerTypes) => {
-  const country: string =
-    countryArray[Math.floor(Math.random() * countryArray.length)];
+  const country = countryArray[Math.floor(Math.random() * countryArray.length)];
   if (!alreadyGuessed.includes(capitals[country])) {
     setAnswer(() => {
       return {
@@ -27,7 +24,6 @@ export const createAnswer = ({
     });
   } else {
     createAnswer({
-      countryArray,
       alreadyGuessed,
       setAnswer,
     });

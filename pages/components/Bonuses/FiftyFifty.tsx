@@ -2,14 +2,14 @@ type FiftyFiftyProps = {
   bonus: {
     fifty: boolean;
   };
-  setBonus: () => void;
+  setFifty: () => void;
 };
 
-export default function FiftyFifty({ bonus, setBonus }: FiftyFiftyProps) {
+export default function FiftyFifty({ bonus, setFifty }: FiftyFiftyProps) {
   if (bonus.fifty === false) {
     return (
       <>
-        <button onClick={setBonus}>50/50</button>
+        <button onClick={setFifty}>50/50</button>
       </>
     );
   } else

@@ -8,21 +8,21 @@ type BonusesProps = {
     shuffle: boolean;
     skip: boolean;
   };
-  setBonus: () => void;
+  setFifty: () => void;
   setSkip: () => void;
   setShuffle: () => void;
 };
 
 export default function Bonuses({
   bonus,
-  setBonus,
+  setFifty,
   setSkip,
   setShuffle,
 }: BonusesProps) {
   return (
     <>
       <div className="flex space-x-2">
-        <FiftyFifty setBonus={setBonus} bonus={bonus} />
+        <FiftyFifty setFifty={setFifty} bonus={bonus} />
         <Shuffle setShuffle={setShuffle} bonus={bonus} />
         <Skip setSkip={setSkip} bonus={bonus} />
       </div>
