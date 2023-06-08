@@ -1,13 +1,11 @@
 import { useState, useContext } from "react";
 import { insertScore } from "../../api/crud";
-import { DifficultyContext } from "../difficulty/DifficultyContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ScoreContext } from "../quiz/ScoreContext";
+import { AppContext } from "../../context/AppContext";
 
 export default function NewHighScore() {
-  const { difficulty, setDifficulty } = useContext(DifficultyContext);
-  const { score, setScore } = useContext(ScoreContext);
+  const { difficulty, setDifficulty, score, setScore } = useContext(AppContext);
   const [name, setName] = useState("");
   const router = useRouter();
 

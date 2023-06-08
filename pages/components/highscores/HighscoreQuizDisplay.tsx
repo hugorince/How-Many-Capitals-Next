@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import { DifficultyContext } from "../difficulty/DifficultyContext";
-import { HighScoreContext } from "./HighScoreContext";
+import { AppContext } from "../../context/AppContext";
 
 export default function HighscoreQuizDisplay() {
-  const { difficulty, setDifficulty } = useContext(DifficultyContext);
-  const { highscores, setHighScores } = useContext(HighScoreContext);
+  const { difficulty, setDifficulty, highscores, setHighScores } =
+    useContext(AppContext);
   return (
     <>
       {difficulty === "easy" ? (

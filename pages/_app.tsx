@@ -1,9 +1,6 @@
 import React, { useRef, useState } from "react";
 import "../styles/globals.css";
-import { DifficultyContext } from "./components/difficulty/DifficultyContext";
-import { HighScoreContext } from "./components/highscores/HighScoreContext";
-import { ScoreContext } from "./components/quiz/ScoreContext";
-import { ButtonRefContext } from "./components/quiz/ButtonRefContext";
+import { AppContext } from "./context/AppContext";
 
 export default function App({ Component, pageProps }) {
   const [difficulty, setDifficulty] = useState("easy");
@@ -26,15 +23,19 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <DifficultyContext.Provider value={{ difficulty, setDifficulty }}>
-        <HighScoreContext.Provider value={{ highscores, setHighScores }}>
-          <ScoreContext.Provider value={{ score, setScore }}>
-            <ButtonRefContext.Provider value={{ buttonRef }}>
-              <Component {...pageProps} />
-            </ButtonRefContext.Provider>
-          </ScoreContext.Provider>
-        </HighScoreContext.Provider>
-      </DifficultyContext.Provider>
+      <AppContext.Provider
+        value={{
+          difficulty,
+          setDifficulty,
+          highscores,
+          setHighScores,
+          score,
+          setScore,
+          buttonRef,
+        }}
+      >
+        <Component {...pageProps} />
+      </AppContext.Provider>
     </>
   );
 }

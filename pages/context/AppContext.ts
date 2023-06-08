@@ -1,6 +1,8 @@
 import { createContext } from "react";
 
-type HighScoreContextTypes = {
+type AppContextTypes = {
+  difficulty: string;
+  setDifficulty: (c: string) => void;
   highscores: {
     easy: {
       name: string;
@@ -16,8 +18,9 @@ type HighScoreContextTypes = {
     };
   };
   setHighScores: any;
+  score: number;
+  setScore: (e: number) => void;
+  buttonRef: any;
 };
 
-export const HighScoreContext = createContext<HighScoreContextTypes | null>(
-  null
-);
+export const AppContext = createContext<AppContextTypes | null>(null);

@@ -1,23 +1,25 @@
 import Link from "next/link";
 import QuizBoxesBuilder from "./components/quiz/QuizBoxBuilder";
 import { useState, useContext, useEffect, useCallback } from "react";
-import { DifficultyContext } from "./components/difficulty/DifficultyContext";
 import { createAnswer, buildChoices } from "./components/quiz/quizLogic";
-import { HighScoreContext } from "./components/highscores/HighScoreContext";
 import HighscoreQuizDisplay from "./components/highscores/HighscoreQuizDisplay";
 import Bonuses from "./components/Bonuses/Bonuses";
 import { handleFiftyFifty } from "./components/Bonuses/bonusesLogic";
-import { setVisibility } from "../utils/setVisibility";
+import { resetButtonVisibility } from "../utils/resetButtonVisibility";
 import { useRouter } from "next/router";
-import { ScoreContext } from "./components/quiz/ScoreContext";
-import { ButtonRefContext } from "./components/quiz/ButtonRefContext";
+import { AppContext } from "./context/AppContext";
 
 export default function Quiz() {
   const router = useRouter();
-  const { difficulty, setDifficulty } = useContext(DifficultyContext);
-  const { highscores, setHighScores } = useContext(HighScoreContext);
-  const { score, setScore } = useContext(ScoreContext);
-  const { buttonRef } = useContext(ButtonRefContext);
+  const {
+    difficulty,
+    setDifficulty,
+    highscores,
+    setHighScores,
+    score,
+    setScore,
+    buttonRef,
+  } = useContext(AppContext);
 
   const [answer, setAnswer] = useState({
     capital: "",
@@ -35,7 +37,7 @@ export default function Quiz() {
     (v) => {
       const clicked = v.target.value;
       if (clicked === answer.capital) {
-        setVisibility(buttonRef);
+        resetButtonVisibility(buttonRef);
         setScore(score + 1);
         setAlreadyGuessed((prev) => [...prev, clicked]);
         createAnswer({ alreadyGuessed, setAnswer });
@@ -71,7 +73,7 @@ export default function Quiz() {
             });
           }}
           setSkip={() => {
-            setVisibility(buttonRef);
+            resetButtonVisibility(buttonRef);
             setBonus({
               fifty: bonus.fifty,
               skip: true,
