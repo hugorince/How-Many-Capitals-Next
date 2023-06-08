@@ -96,7 +96,7 @@ const Quiz = () => {
           />
         </div>
         <div>Your streak is : {score}</div>
-        <Link href="/gameOver" className="border border-black rounded p-1">
+        <Link href="/gameover" className="border border-black rounded p-1">
           End Game
         </Link>
       </div>
