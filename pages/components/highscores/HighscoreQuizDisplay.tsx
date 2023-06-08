@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
-export default function HighscoreQuizDisplay() {
+const HighscoreQuizDisplay = () => {
   const { difficulty, setDifficulty, highscores, setHighScores } =
     useContext(AppContext);
   return (
@@ -24,4 +24,6 @@ export default function HighscoreQuizDisplay() {
       )}
     </>
   );
-}
+};
+
+export default HighscoreQuizDisplay;

@@ -5,7 +5,7 @@ import { fetchHighScores } from "./api/crud";
 import HighscoreDisplay from "./components/highscores/HighscoresDisplay";
 import { AppContext } from "./context/AppContext";
 
-export default function Home() {
+const Home = () => {
   const { highscores, setHighScores } = useContext(AppContext);
 
   useEffect(() => {
@@ -31,4 +31,6 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home;

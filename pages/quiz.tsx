@@ -1,5 +1,5 @@
 import Link from "next/link";
-import QuizBoxesBuilder from "./components/quiz/QuizBoxBuilder";
+import QuizOptionsBuilder from "./components/quiz/QuizOptionsBuilder";
 import { useState, useContext, useEffect, useCallback } from "react";
 import { createAnswer, buildChoices } from "./components/quiz/quizLogic";
 import HighscoreQuizDisplay from "./components/highscores/HighscoreQuizDisplay";
@@ -9,7 +9,7 @@ import { resetButtonVisibility } from "../utils/resetButtonVisibility";
 import { useRouter } from "next/router";
 import { AppContext } from "./context/AppContext";
 
-export default function Quiz() {
+const Quiz = () => {
   const router = useRouter();
   const {
     difficulty,
@@ -43,7 +43,7 @@ export default function Quiz() {
         createAnswer({ alreadyGuessed, setAnswer });
       } else {
         setAlreadyGuessed([]);
-        router.push("/gameOver");
+        router.push("/gameover");
       }
     },
     [alreadyGuessed, answer]
@@ -90,7 +90,7 @@ export default function Quiz() {
         />
         <h1 className="font-bold">What is the capital of {answer.country}</h1>
         <div>
-          <QuizBoxesBuilder
+          <QuizOptionsBuilder
             choices={choices}
             handleChoiceClicked={handleChoiceClicked}
           />
@@ -102,4 +102,6 @@ export default function Quiz() {
       </div>
     </>
   );
-}
+};
+
+export default Quiz;

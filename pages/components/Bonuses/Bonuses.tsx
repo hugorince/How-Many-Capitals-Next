@@ -13,12 +13,7 @@ type BonusesProps = {
   setShuffle: () => void;
 };
 
-export default function Bonuses({
-  bonus,
-  setFifty,
-  setSkip,
-  setShuffle,
-}: BonusesProps) {
+const Bonuses = ({ bonus, setFifty, setSkip, setShuffle }: BonusesProps) => {
   return (
     <>
       <div className="flex space-x-2">
@@ -28,4 +23,6 @@ export default function Bonuses({
       </div>
     </>
   );
-}
+};
+
+export default Bonuses;

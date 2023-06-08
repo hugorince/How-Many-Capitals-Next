@@ -5,7 +5,7 @@ type FiftyFiftyProps = {
   setFifty: () => void;
 };
 
-export default function FiftyFifty({ bonus, setFifty }: FiftyFiftyProps) {
+const FiftyFifty = ({ bonus, setFifty }: FiftyFiftyProps) => {
   if (bonus.fifty === false) {
     return (
       <>
@@ -18,4 +18,6 @@ export default function FiftyFifty({ bonus, setFifty }: FiftyFiftyProps) {
         <button className="text-red-500">50/50</button>
       </>
     );
-}
+};
+
+export default FiftyFifty;

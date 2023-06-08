@@ -1,16 +1,16 @@
-import QuizBox from "./QuizBox";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
+import QuizOption from "./QuizOption";
 
-type QuizBoxBuilderProps = {
+type QuizOptionsBuilderProps = {
   choices: string[];
   handleChoiceClicked: any;
 };
 
-export default function QuizBoxesBuilder({
+const QuizOptionsBuilder = ({
   choices,
   handleChoiceClicked,
-}: QuizBoxBuilderProps) {
+}: QuizOptionsBuilderProps) => {
   const { buttonRef } = useContext(AppContext);
   return (
     <>
@@ -18,11 +18,16 @@ export default function QuizBoxesBuilder({
         {choices.map((item: string) => {
           return (
             <>
-              <QuizBox value={item} handleChoiceClicked={handleChoiceClicked} />
+              <QuizOption
+                value={item}
+                handleChoiceClicked={handleChoiceClicked}
+              />
             </>
           );
         })}
       </div>
     </>
   );
-}
+};
+
+export default QuizOptionsBuilder;

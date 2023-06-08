@@ -1,7 +1,7 @@
 import { AppContext } from "../../context/AppContext";
 import { useContext } from "react";
 
-export default function HighscoreDisplay() {
+const HighscoreDisplay = () => {
   const { highscores, setHighScores } = useContext(AppContext);
   return (
     <>
@@ -28,4 +28,6 @@ export default function HighscoreDisplay() {
       </div>
     </>
   );
-}
+};
+
+export default HighscoreDisplay;
