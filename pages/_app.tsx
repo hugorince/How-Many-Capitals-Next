@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import "../styles/globals.css";
 import { AppContext } from "./context/AppContext";
 
-export default function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
   const [difficulty, setDifficulty] = useState("easy");
   const [highscores, setHighScores] = useState({
     easy: {
@@ -38,4 +38,6 @@ export default function App({ Component, pageProps }) {
       </AppContext.Provider>
     </>
   );
-}
+};
+
+export default App;

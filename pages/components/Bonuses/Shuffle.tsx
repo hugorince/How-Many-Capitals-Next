@@ -5,7 +5,7 @@ type ShuffleProps = {
   setShuffle: () => void;
 };
 
-export default function Shuffle({ setShuffle, bonus }: ShuffleProps) {
+const Shuffle = ({ setShuffle, bonus }: ShuffleProps) => {
   if (bonus.shuffle === false) {
     return (
       <>
@@ -18,4 +18,6 @@ export default function Shuffle({ setShuffle, bonus }: ShuffleProps) {
         <button className="text-red-500">shuffle</button>
       </>
     );
-}
+};
+
+export default Shuffle;

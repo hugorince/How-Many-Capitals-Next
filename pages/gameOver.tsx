@@ -3,7 +3,7 @@ import Loose from "./components/quiz/Loose";
 import NewHighScore from "./components/highscores/NewHighScore";
 import { AppContext } from "./context/AppContext";
 
-export default function GameOver() {
+const GameOver = () => {
   const {
     score,
     setScore,
@@ -26,4 +26,6 @@ export default function GameOver() {
       )}
     </>
   );
-}
+};
+
+export default GameOver;

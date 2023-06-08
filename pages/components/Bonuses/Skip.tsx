@@ -5,7 +5,7 @@ type SkipProps = {
   setSkip: () => void;
 };
 
-export default function Skip({ bonus, setSkip }: SkipProps) {
+const Skip = ({ bonus, setSkip }: SkipProps) => {
   if (bonus.skip === false) {
     return (
       <>
@@ -18,4 +18,5 @@ export default function Skip({ bonus, setSkip }: SkipProps) {
         <button className="text-red-500">skip</button>
       </>
     );
-}
+};
+export default Skip;

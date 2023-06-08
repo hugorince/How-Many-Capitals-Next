@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
-export default function setDifficulty() {
+const setDifficulty = () => {
   const { difficulty, setDifficulty } = useContext(AppContext);
 
   const handleClick = (e) => {
@@ -74,4 +74,6 @@ export default function setDifficulty() {
       </div>
     </>
   );
-}
+};
+
+export default setDifficulty;

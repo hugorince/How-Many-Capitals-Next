@@ -3,7 +3,7 @@ type QuizBoxProps = {
   handleChoiceClicked: any;
 };
 
-export default function QuizBox({ value, handleChoiceClicked }: QuizBoxProps) {
+const QuizOption = ({ value, handleChoiceClicked }: QuizBoxProps) => {
   return (
     <>
       <div id={value} key={value}>
@@ -17,4 +17,6 @@ export default function QuizBox({ value, handleChoiceClicked }: QuizBoxProps) {
       </div>
     </>
   );
-}
+};
+
+export default QuizOption;

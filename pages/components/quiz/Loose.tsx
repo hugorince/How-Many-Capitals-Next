@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 
-export default function Loose() {
+const Loose = () => {
   const { score, setScore } = useContext(AppContext);
 
   const handleClick = () => {
@@ -24,4 +24,6 @@ export default function Loose() {
       </div>
     </>
   );
-}
+};
+
+export default Loose;
