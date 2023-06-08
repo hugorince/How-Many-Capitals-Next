@@ -1,8 +1,8 @@
-import { HighScoreContext } from "./HighScoreContext";
+import { AppContext } from "../../context/AppContext";
 import { useContext } from "react";
 
 export default function HighscoreDisplay() {
-  const { highscores, setHighScores } = useContext(HighScoreContext);
+  const { highscores, setHighScores } = useContext(AppContext);
   return (
     <>
       <div className="flex flex-col space-y-4">
