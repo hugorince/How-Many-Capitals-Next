@@ -7,19 +7,34 @@ const HighscoreQuizDisplay = () => {
   return (
     <>
       {difficulty === "easy" ? (
-        <div>
-          Highscore in {difficulty} is {highscores.easy.score} by{" "}
-          {highscores.easy.name}
+        <div className="flex space-x-4 items-center">
+          <div className="flex flex-col items-center">
+            <span className="relative top-2">👑</span>
+            <p className="text-xl font-semibold underline decoration-yellow-500">
+              {highscores.easy.name}
+            </p>
+          </div>
+          <p className="italic text-2xl pt-6">{highscores.easy.score}</p>
         </div>
       ) : difficulty === "medium" ? (
-        <div>
-          Highscore in {difficulty} is {highscores.medium.score} by{" "}
-          {highscores.medium.name}
+        <div className="flex space-x-4 items-center">
+          <div className="flex flex-col items-center">
+            <span className="relative top-2">👑</span>
+            <p className="text-xl font-semibold underline decoration-yellow-500">
+              {highscores.medium.name}
+            </p>
+          </div>
+          <p className="italic text-2xl pt-6">{highscores.medium.score}</p>
         </div>
       ) : (
-        <div>
-          Highscore in {difficulty} is {highscores.hard.score} by{" "}
-          {highscores.hard.name}
+        <div className="flex space-x-4 items-center">
+          <div className="flex flex-col items-center">
+            <span className="relative top-2">👑</span>
+            <p className="text-xl font-semibold underline decoration-yellow-500">
+              {highscores.hard.name}
+            </p>
+          </div>
+          <p className="italic text-2xl pt-6">{highscores.hard.score}</p>
         </div>
       )}
     </>

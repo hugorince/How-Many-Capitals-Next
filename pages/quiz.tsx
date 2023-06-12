@@ -88,7 +88,12 @@ const Quiz = () => {
             })
           }
         />
-        <h1 className="font-bold">What is the capital of {answer.country}</h1>
+        <h1 className="font-bold">
+          What is the capital of{" "}
+          <span className="underline decoration-blue-500">
+            {answer.country}
+          </span>
+        </h1>
         <div>
           <QuizOptionsBuilder
             choices={choices}
@@ -96,7 +101,7 @@ const Quiz = () => {
           />
         </div>
         <div>Your streak is : {score}</div>
-        <Link href="/gameOver" className="border border-black rounded p-1">
+        <Link href="/gameover" className="border border-black rounded p-1">
           End Game
         </Link>
       </div>

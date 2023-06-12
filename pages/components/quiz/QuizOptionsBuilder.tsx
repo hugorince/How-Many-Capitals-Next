@@ -14,7 +14,7 @@ const QuizOptionsBuilder = ({
   const { buttonRef } = useContext(AppContext);
   return (
     <>
-      <div className="flex flex-col space-y-2" ref={buttonRef}>
+      <div className="flex flex-col space-y-2 items-center" ref={buttonRef}>
         {choices.map((item: string) => {
           return (
             <>

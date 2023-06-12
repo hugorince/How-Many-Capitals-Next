@@ -1,3 +1,4 @@
+import { ImShuffle } from "react-icons/im";
 type ShuffleProps = {
   bonus: {
     shuffle: boolean;
@@ -9,13 +10,13 @@ const Shuffle = ({ setShuffle, bonus }: ShuffleProps) => {
   if (bonus.shuffle === false) {
     return (
       <>
-        <button onClick={setShuffle}>shuffle</button>
+        <ImShuffle onClick={setShuffle} size={24} className="" />
       </>
     );
   } else
     return (
       <>
-        <button className="text-red-500">shuffle</button>
+        <ImShuffle size={24} className="text-red-500 opacity-50" />
       </>
     );
 };
