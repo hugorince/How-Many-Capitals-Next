@@ -11,13 +11,17 @@ const Skip = ({ bonus, setSkip }: SkipProps) => {
   if (bonus.skip === false) {
     return (
       <>
-        <BsFillSkipForwardFill onClick={setSkip} size={24} />
+        <BsFillSkipForwardFill
+          onClick={setSkip}
+          size={24}
+          className="cursor-pointer"
+        />
       </>
     );
   } else
     return (
       <>
-        <BsFillSkipForwardFill size={24} className="text-red-500 opacity-50" />
+        <BsFillSkipForwardFill size={24} className="text-red-700 opacity-80" />
       </>
     );
 };

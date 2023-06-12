@@ -10,13 +10,13 @@ const Shuffle = ({ setShuffle, bonus }: ShuffleProps) => {
   if (bonus.shuffle === false) {
     return (
       <>
-        <ImShuffle onClick={setShuffle} size={24} className="" />
+        <ImShuffle onClick={setShuffle} size={24} className="cursor-pointer" />
       </>
     );
   } else
     return (
       <>
-        <ImShuffle size={24} className="text-red-500 opacity-50" />
+        <ImShuffle size={24} className="text-red-700 opacity-80" />
       </>
     );
 };

@@ -10,17 +10,17 @@ const setDifficulty = () => {
 
   return (
     <>
-      <div>
-        <h2 className="italic">choose difficulty :</h2>
+      <div className="flex flex-col items-center space-y-2">
+        <h2 className="text-sm">set difficulty :</h2>
         <div className="flex space-x-2">
           <div>
             {difficulty === "easy" ? (
               <button
-                className="border border-black p-2 rounded bg-gray-600 text-white hover:bg-black hover:text-white"
+                className="border border-black p-2 rounded bg-green-700 text-white sm:hover:bg-black hover:text-white"
                 value={"easy"}
                 onClick={handleClick}
               >
-                easy
+                beginner
               </button>
             ) : (
               <button
@@ -28,18 +28,18 @@ const setDifficulty = () => {
                 value={"easy"}
                 onClick={handleClick}
               >
-                easy
+                beginner
               </button>
             )}
           </div>
           <div>
             {difficulty === "medium" ? (
               <button
-                className="border border-black p-2 rounded bg-gray-600 text-white hover:bg-black hover:text-white"
+                className="border border-black p-2 rounded bg-blue-700 text-white sm:hover:bg-black hover:text-white"
                 value={"medium"}
                 onClick={handleClick}
               >
-                medium
+                intermediate
               </button>
             ) : (
               <button
@@ -47,18 +47,18 @@ const setDifficulty = () => {
                 value={"medium"}
                 onClick={handleClick}
               >
-                medium
+                intermediate
               </button>
             )}
           </div>
           <div>
             {difficulty === "hard" ? (
               <button
-                className="border border-black p-2 rounded bg-gray-600 text-white hover:bg-black hover:text-white"
+                className="border border-black p-2 rounded bg-red-700 text-white sm:hover:bg-black sm:hover:text-white"
                 value={"hard"}
                 onClick={handleClick}
               >
-                hard
+                expert
               </button>
             ) : (
               <button
@@ -66,7 +66,7 @@ const setDifficulty = () => {
                 value={"hard"}
                 onClick={handleClick}
               >
-                hard
+                expert
               </button>
             )}
           </div>

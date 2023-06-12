@@ -11,13 +11,13 @@ const FiftyFifty = ({ bonus, setFifty }: FiftyFiftyProps) => {
   if (bonus.fifty === false) {
     return (
       <>
-        <BsCircleHalf onClick={setFifty} size={24} />
+        <BsCircleHalf onClick={setFifty} size={24} className="cursor-pointer" />
       </>
     );
   } else
     return (
       <>
-        <BsCircleHalf size={24} className="text-red-500 opacity-50" />
+        <BsCircleHalf size={24} className="text-red-700 opacity-80" />
       </>
     );
 };
