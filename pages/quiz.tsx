@@ -88,7 +88,12 @@ const Quiz = () => {
             })
           }
         />
-        <h1 className="font-bold">What is the capital of {answer.country}</h1>
+        <h1 className="font-bold">
+          What is the capital of{" "}
+          <span className="underline decoration-blue-500">
+            {answer.country}
+          </span>
+        </h1>
         <div>
           <QuizOptionsBuilder
             choices={choices}

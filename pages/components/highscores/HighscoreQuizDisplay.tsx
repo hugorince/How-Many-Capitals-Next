@@ -7,22 +7,34 @@ const HighscoreQuizDisplay = () => {
   return (
     <>
       {difficulty === "easy" ? (
-        <div className="flex flex-col items-center">
-          <p className="absolute">{highscores.easy.name}</p>
-          <span className="relative bottom-5">👑</span>
-          <p>{highscores.easy.score}</p>
+        <div className="flex space-x-4 items-center">
+          <div className="flex flex-col items-center">
+            <span className="relative top-2">👑</span>
+            <p className="text-xl font-semibold underline decoration-yellow-500">
+              {highscores.easy.name}
+            </p>
+          </div>
+          <p className="italic text-2xl pt-6">{highscores.easy.score}</p>
         </div>
       ) : difficulty === "medium" ? (
-        <div className="flex flex-col items-center">
-          <p className="absolute">{highscores.medium.name}</p>
-          <span className="relative bottom-5">👑</span>
-          <p>{highscores.medium.score}</p>
+        <div className="flex space-x-4 items-center">
+          <div className="flex flex-col items-center">
+            <span className="relative top-2">👑</span>
+            <p className="text-xl font-semibold underline decoration-yellow-500">
+              {highscores.medium.name}
+            </p>
+          </div>
+          <p className="italic text-2xl pt-6">{highscores.medium.score}</p>
         </div>
       ) : (
-        <div className="flex flex-col items-center">
-          <p className="absolute">{highscores.hard.name}</p>
-          <span className="relative bottom-5">👑</span>
-          <p>{highscores.hard.score}</p>
+        <div className="flex space-x-4 items-center">
+          <div className="flex flex-col items-center">
+            <span className="relative top-2">👑</span>
+            <p className="text-xl font-semibold underline decoration-yellow-500">
+              {highscores.hard.name}
+            </p>
+          </div>
+          <p className="italic text-2xl pt-6">{highscores.hard.score}</p>
         </div>
       )}
     </>

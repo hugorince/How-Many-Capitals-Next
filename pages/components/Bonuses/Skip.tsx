@@ -1,3 +1,5 @@
+import { BsFillSkipForwardFill } from "react-icons/bs";
+
 type SkipProps = {
   bonus: {
     skip: boolean;
@@ -9,13 +11,13 @@ const Skip = ({ bonus, setSkip }: SkipProps) => {
   if (bonus.skip === false) {
     return (
       <>
-        <button onClick={setSkip}>skip</button>
+        <BsFillSkipForwardFill onClick={setSkip} size={24} />
       </>
     );
   } else
     return (
       <>
-        <button className="text-red-500">skip</button>
+        <BsFillSkipForwardFill size={24} className="text-red-500 opacity-50" />
       </>
     );
 };

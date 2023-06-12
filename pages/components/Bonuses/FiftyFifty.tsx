@@ -1,3 +1,5 @@
+import { BsCircleHalf } from "react-icons/bs";
+
 type FiftyFiftyProps = {
   bonus: {
     fifty: boolean;
@@ -9,13 +11,13 @@ const FiftyFifty = ({ bonus, setFifty }: FiftyFiftyProps) => {
   if (bonus.fifty === false) {
     return (
       <>
-        <button onClick={setFifty}>50/50</button>
+        <BsCircleHalf onClick={setFifty} size={24} />
       </>
     );
   } else
     return (
       <>
-        <button className="text-red-500">50/50</button>
+        <BsCircleHalf size={24} className="text-red-500 opacity-50" />
       </>
     );
 };
