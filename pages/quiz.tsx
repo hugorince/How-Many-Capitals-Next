@@ -33,13 +33,14 @@ const Quiz = () => {
     shuffle: false,
   });
 
+  console.log({ alreadyGuessed });
   const handleChoiceClicked = useCallback(
     (v) => {
-      const clicked = v.target.value;
-      if (clicked === answer.capital) {
+      const buttonValue = v.target.value;
+      if (buttonValue === answer.capital) {
         resetButtonVisibility(buttonRef);
         setScore(score + 1);
-        setAlreadyGuessed((prev) => [...prev, clicked]);
+        setAlreadyGuessed((prev) => [...prev, buttonValue]);
         createAnswer({ alreadyGuessed, setAnswer });
       } else {
         setAlreadyGuessed([]);
@@ -59,7 +60,7 @@ const Quiz = () => {
 
   return (
     <>
-      <div className="flex flex-col space-y-8 h-screen w-screen items-center place-content-center p-4">
+      <div className="flex flex-col space-y-8 w-screen h-screen items-center justify-center p-4">
         <HighscoreQuizDisplay />
         <Bonuses
           bonus={bonus}
@@ -101,8 +102,11 @@ const Quiz = () => {
           />
         </div>
         <div>Your streak is : {score}</div>
-        <Link href="/gameover" className="border border-black rounded p-1">
-          End Game
+        <Link
+          href="/gameover"
+          className="italic underline decoration-red-500 cursor-pointer bottom-8 absolute"
+        >
+          End game
         </Link>
       </div>
     </>

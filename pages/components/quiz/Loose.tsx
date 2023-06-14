@@ -11,12 +11,15 @@ const Loose = () => {
 
   return (
     <>
-      <div className="flex flex-col space-y-4 place-content-center items-center h-screen w-screen">
-        <div>Oh no, you've lost 😞</div>
-        <div>Your score is {score}</div>
+      <div className="flex flex-col space-y-8 place-content-center items-center h-screen w-screen">
+        <h1 className="text-2xl font-bold">Game Over 😞</h1>
+        <h2>
+          Your score is{" "}
+          <span className="underline decoration-blue-700 text-xl">{score}</span>
+        </h2>
         <Link
           href={"/"}
-          className="border border-black p-2 rounded hover:bg-black hover:text-white"
+          className="text-xl italic cursor-pointer underline decoration-green-700"
           onClick={handleClick}
         >
           Play again ?

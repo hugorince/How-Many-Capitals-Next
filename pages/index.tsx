@@ -17,7 +17,7 @@ const Home = () => {
       <div className="flex flex-col space-y-8 h-screen w-screen items-center place-content-center p-4">
         <div>
           <h1 className="font-bold text-xl">Welcome to How Many Capitals</h1>
-          <p>find the most capitals in a row</p>
+          <h2 className="italic">find the most capitals in a row</h2>
         </div>
 
         <HighscoreDisplay />
