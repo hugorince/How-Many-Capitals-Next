@@ -12,6 +12,7 @@ export default function NewHighScore() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     await insertScore({ score, name, difficulty });
+    setScore(0);
     router.push("/");
   };
 
@@ -22,8 +23,11 @@ export default function NewHighScore() {
   return (
     <>
       <div className="flex flex-col space-y-4 place-content-center items-center h-screen w-screen">
-        <h1>Congrats, You've got a Highscore!!</h1>
-        <p>Would you like to register it?</p>
+        <div className="text-4xl">🏆</div>
+        <h1 className="font-bold text-xl">
+          Congrats, You've got a Highscore!!
+        </h1>
+        <p className="italic">Would you like to register it?</p>
         <form
           action=""
           onSubmit={handleSubmit}
@@ -38,16 +42,13 @@ export default function NewHighScore() {
             className="border border-black p-2"
             placeholder="enter your name"
           />
-          <button
-            //type="Submit"
-            className="border border-black p-2 rounded hover:bg-black hover:text-white"
-          >
+          <button className="border border-black p-2 rounded hover:bg-black hover:text-white">
             Send
           </button>
         </form>
         <Link
           href={"/"}
-          className="border border-black p-2 rounded hover:bg-black hover:text-white"
+          className="italic underline decoration-red-500 cursor-pointer bottom-16 absolute text-xl"
           onClick={handleClick}
         >
           Play again ?

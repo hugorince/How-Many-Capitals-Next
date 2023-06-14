@@ -17,12 +17,10 @@ const QuizOptionsBuilder = ({
       <div className="flex flex-col space-y-2 items-center" ref={buttonRef}>
         {choices.map((item: string) => {
           return (
-            <>
-              <QuizOption
-                value={item}
-                handleChoiceClicked={handleChoiceClicked}
-              />
-            </>
+            <QuizOption
+              value={item}
+              handleChoiceClicked={handleChoiceClicked}
+            />
           );
         })}
       </div>
