@@ -33,7 +33,6 @@ const Quiz = () => {
     shuffle: false,
   });
 
-  console.log({ alreadyGuessed });
   const handleChoiceClicked = useCallback(
     (v) => {
       const buttonValue = v.target.value;
