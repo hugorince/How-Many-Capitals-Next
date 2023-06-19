@@ -11,11 +11,7 @@ const setDifficulty = () => {
 
   return (
     <>
-      <motion.div
-        animate={{ opacity: [0, 1] }}
-        transition={{ duration: 2 }}
-        className="flex flex-col items-center space-y-2"
-      >
+      <div className="flex flex-col items-center space-y-2">
         <h2 className="text-sm">set difficulty :</h2>
         <div className="flex space-x-2">
           <div>
@@ -76,7 +72,7 @@ const setDifficulty = () => {
             )}
           </div>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 };
