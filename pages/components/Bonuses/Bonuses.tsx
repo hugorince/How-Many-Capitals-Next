@@ -16,10 +16,13 @@ type BonusesProps = {
 const Bonuses = ({ bonus, setFifty, setSkip, setShuffle }: BonusesProps) => {
   return (
     <>
-      <div className="flex space-x-8">
-        <FiftyFifty setFifty={setFifty} bonus={bonus} />
-        <Shuffle setShuffle={setShuffle} bonus={bonus} />
-        <Skip setSkip={setSkip} bonus={bonus} />
+      <div className="border border-black rounded p-4 relative w-9/12">
+        <h1 className="absolute bottom-[3.9rem] bg-white p-1">Bonus</h1>
+        <div className="flex space-x-12 justify-center">
+          <FiftyFifty setFifty={setFifty} bonus={bonus} />
+          <Shuffle setShuffle={setShuffle} bonus={bonus} />
+          <Skip setSkip={setSkip} bonus={bonus} />
+        </div>
       </div>
     </>
   );
