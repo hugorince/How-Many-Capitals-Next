@@ -9,7 +9,7 @@ const HighscoreDisplay = () => {
         <div className="flex flex-col items-center">
           <div>🏆</div>
           <h1 className="font-semibold underline decoration-yellow-500">
-            Highscores
+            Crown holder :
           </h1>
         </div>
         <div>

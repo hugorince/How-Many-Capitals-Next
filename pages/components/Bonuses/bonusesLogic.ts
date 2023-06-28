@@ -29,11 +29,11 @@ export const handleFiftyFifty = ({
 
   let diffNum = 0;
   let hidden = 0;
-  if (difficulty === "easy") {
+  if (difficulty === "beginner") {
     diffNum = 2;
-  } else if (difficulty === "medium") {
+  } else if (difficulty === "intermediate") {
     diffNum = 3;
-  } else if (difficulty === "hard") {
+  } else if (difficulty === "expert") {
     diffNum = 4;
   }
   while (hidden < diffNum) {
