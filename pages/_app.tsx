@@ -3,7 +3,7 @@ import "../styles/globals.css";
 import { AppContext } from "./context/AppContext";
 
 const App = ({ Component, pageProps }) => {
-  const [difficulty, setDifficulty] = useState("easy");
+  const [difficulty, setDifficulty] = useState("beginner");
   const [highscores, setHighScores] = useState({
     easy: {
       name: "",

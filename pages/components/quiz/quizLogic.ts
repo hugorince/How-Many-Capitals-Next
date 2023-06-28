@@ -44,7 +44,7 @@ export const buildChoices = ({
   setChoices,
 }: buildChoicesTypes) => {
   const cities2 = shuffle([...allCities]);
-  if (difficulty === "easy") {
+  if (difficulty === "beginner") {
     const choicesTemp = [answer.capital, cities2[0], cities2[1], cities2[2]];
     const finalChoices = shuffle([...choicesTemp]);
     setChoices([
@@ -53,7 +53,7 @@ export const buildChoices = ({
       finalChoices[2],
       finalChoices[3],
     ]);
-  } else if (difficulty === "medium") {
+  } else if (difficulty === "intermediate") {
     const choicesTemp = [
       answer.capital,
       cities2[0],
@@ -71,7 +71,7 @@ export const buildChoices = ({
       finalChoices[4],
       finalChoices[5],
     ]);
-  } else if (difficulty === "hard") {
+  } else if (difficulty === "expert") {
     const choicesTemp = [
       answer.capital,
       cities2[0],

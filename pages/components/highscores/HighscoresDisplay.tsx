@@ -13,13 +13,13 @@ const HighscoreDisplay = () => {
           </h1>
         </div>
         <div>
-          {difficulty === "easy" ? (
+          {difficulty === "beginner" ? (
             <div className="flex flex-col items-center">
               <div className="italic text-green-700">beginner</div>
               <div className="">{highscores.easy.name}</div>
               <div className="font-bold">{highscores.easy.score}</div>
             </div>
-          ) : difficulty === "medium" ? (
+          ) : difficulty === "intermediate" ? (
             <>
               <div className="flex flex-col items-center">
                 <div className="italic text-blue-700">intermediate</div>

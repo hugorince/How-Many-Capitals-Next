@@ -1,14 +1,14 @@
 import { supabase } from "../../supabase";
 
-export const fetchHighScores = async (setHighScores) => {
+export const fetchHighScores = async (setHighScores: any) => {
   const { data, error } = await supabase
     .from("highscores")
     .select("score, name, difficulty")
     .order("score", { ascending: false });
 
-  const easy = data.filter((item) => item.difficulty === "easy");
-  const medium = data.filter((item) => item.difficulty === "medium");
-  const hard = data.filter((item) => item.difficulty === "hard");
+  const easy = data.filter((item) => item.difficulty === "beginner");
+  const medium = data.filter((item) => item.difficulty === "intermediate");
+  const hard = data.filter((item) => item.difficulty === "expert");
 
   setHighScores(() => {
     return {

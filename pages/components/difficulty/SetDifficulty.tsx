@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
-import { motion } from "framer-motion";
 
 const setDifficulty = () => {
   const { difficulty, setDifficulty } = useContext(AppContext);
 
-  const handleClick = (e) => {
+  const handleClick = (e: any) => {
     setDifficulty(e.target.value);
   };
 
@@ -15,10 +14,10 @@ const setDifficulty = () => {
         <h2 className="text-sm">set difficulty :</h2>
         <div className="flex space-x-2">
           <div>
-            {difficulty === "easy" ? (
+            {difficulty === "beginner" ? (
               <button
                 className="border border-black p-2 rounded bg-green-700 text-white sm:hover:bg-black hover:text-white"
-                value={"easy"}
+                value={"beginner"}
                 onClick={handleClick}
               >
                 beginner
@@ -26,7 +25,7 @@ const setDifficulty = () => {
             ) : (
               <button
                 className="border border-black p-2 rounded hover:bg-black hover:text-white"
-                value={"easy"}
+                value={"beginner"}
                 onClick={handleClick}
               >
                 beginner
@@ -34,10 +33,10 @@ const setDifficulty = () => {
             )}
           </div>
           <div>
-            {difficulty === "medium" ? (
+            {difficulty === "intermediate" ? (
               <button
                 className="border border-black p-2 rounded bg-blue-700 text-white sm:hover:bg-black hover:text-white"
-                value={"medium"}
+                value={"intermediate"}
                 onClick={handleClick}
               >
                 intermediate
@@ -45,7 +44,7 @@ const setDifficulty = () => {
             ) : (
               <button
                 className="border border-black p-2 rounded hover:bg-black hover:text-white"
-                value={"medium"}
+                value={"intermediate"}
                 onClick={handleClick}
               >
                 intermediate
@@ -53,10 +52,10 @@ const setDifficulty = () => {
             )}
           </div>
           <div>
-            {difficulty === "hard" ? (
+            {difficulty === "expert" ? (
               <button
                 className="border border-black p-2 rounded bg-red-700 text-white sm:hover:bg-black sm:hover:text-white"
-                value={"hard"}
+                value={"expert"}
                 onClick={handleClick}
               >
                 expert
@@ -64,7 +63,7 @@ const setDifficulty = () => {
             ) : (
               <button
                 className="border border-black p-2 rounded hover:bg-black hover:text-white"
-                value={"hard"}
+                value={"expert"}
                 onClick={handleClick}
               >
                 expert
