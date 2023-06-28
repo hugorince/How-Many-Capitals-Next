@@ -60,7 +60,6 @@ const Quiz = () => {
   return (
     <>
       <div className="flex flex-col space-y-8 w-screen h-screen items-center justify-center p-4">
-        <HighscoreQuizDisplay />
         <Bonuses
           bonus={bonus}
           setFifty={() => {
@@ -92,7 +91,8 @@ const Quiz = () => {
           What is the capital of{" "}
           <span className="underline decoration-blue-500">
             {answer.country}
-          </span>
+          </span>{" "}
+          ?
         </h1>
         <div>
           <QuizOptionsBuilder
@@ -100,7 +100,8 @@ const Quiz = () => {
             handleChoiceClicked={handleChoiceClicked}
           />
         </div>
-        <div>Your streak is : {score}</div>
+        <h2 className="font-bold">Your streak is : {score}</h2>
+        <HighscoreQuizDisplay />
         <Link
           href="/gameover"
           className="italic underline decoration-red-500 cursor-pointer bottom-8 absolute"
