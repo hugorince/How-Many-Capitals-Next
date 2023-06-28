@@ -6,7 +6,7 @@ const HighscoreQuizDisplay = () => {
     useContext(AppContext);
   return (
     <>
-      {difficulty === "easy" ? (
+      {difficulty === "beginner" ? (
         <div className="flex space-x-4 items-center">
           <div className="flex flex-col items-center">
             <span className="relative top-2">👑</span>
@@ -16,7 +16,7 @@ const HighscoreQuizDisplay = () => {
           </div>
           <p className="italic text-2xl pt-6">{highscores.easy.score}</p>
         </div>
-      ) : difficulty === "medium" ? (
+      ) : difficulty === "intermediate" ? (
         <div className="flex space-x-4 items-center">
           <div className="flex flex-col items-center">
             <span className="relative top-2">👑</span>

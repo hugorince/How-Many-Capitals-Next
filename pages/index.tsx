@@ -5,9 +5,12 @@ import { fetchHighScores } from "./api/crud";
 import HighscoreDisplay from "./components/highscores/HighscoresDisplay";
 import { AppContext } from "./context/AppContext";
 import { motion } from "framer-motion";
+import Router from "next/router";
 
 const Home = () => {
-  const { highscores, setHighScores } = useContext(AppContext);
+  const { highscores, setHighScores, difficulty } = useContext(AppContext);
+  const [fullscreenMessage, setFullScreenMessage] =
+    useState("How Many Capitals");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -18,11 +21,18 @@ const Home = () => {
     }, 2000);
   }, []);
 
+  const handleStartQuiz = () => {
+    setFullScreenMessage(`game starting in ${difficulty} mode`);
+    setIsLoading(true);
+    setTimeout(() => {
+      Router.push("/quiz");
+    }, 2000);
+  };
   return (
     <>
       {isLoading ? (
         <div className="flex flex-col text-2xl font-bold items-center justify-center h-screen w-screen bg-blue-700">
-          <h1 className="text-white">How Many Capitals</h1>
+          <h1 className="text-white">{fullscreenMessage}</h1>
         </div>
       ) : (
         <motion.div
@@ -37,12 +47,12 @@ const Home = () => {
 
           <HighscoreDisplay />
           <SetDifficulty />
-          <Link
+          <button
             className="border border-black p-2 rounded hover:bg-black hover:text-white"
-            href="/quiz"
+            onClick={handleStartQuiz}
           >
             Start Quiz
-          </Link>
+          </button>
         </motion.div>
       )}
     </>
