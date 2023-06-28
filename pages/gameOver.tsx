@@ -15,11 +15,11 @@ const GameOver = () => {
 
   return (
     <>
-      {difficulty === "easy" && score > highscores.easy.score ? (
+      {difficulty === "beginner" && score > highscores.easy.score ? (
         <NewHighScore />
-      ) : difficulty === "medium" && score > highscores.medium.score ? (
+      ) : difficulty === "intermediate" && score > highscores.medium.score ? (
         <NewHighScore />
-      ) : difficulty === "hard" && score > highscores.hard.score ? (
+      ) : difficulty === "expert" && score > highscores.hard.score ? (
         <NewHighScore />
       ) : (
         <Loose />
