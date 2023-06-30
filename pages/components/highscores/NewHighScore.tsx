@@ -1,19 +1,18 @@
 import { useState, useContext } from "react";
 import { insertScore } from "../../api/crud";
-import { useRouter } from "next/navigation";
+import Router from "next/router";
 import Link from "next/link";
 import { AppContext } from "../../context/AppContext";
 
 export default function NewHighScore() {
   const { difficulty, setDifficulty, score, setScore } = useContext(AppContext);
   const [name, setName] = useState("");
-  const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     await insertScore({ score, name, difficulty });
     setScore(0);
-    router.push("/");
+    Router.push("/");
   };
 
   const handleClick = () => {

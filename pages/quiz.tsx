@@ -94,13 +94,13 @@ const Quiz = () => {
           </span>{" "}
           ?
         </h1>
-        <div>
-          <QuizOptionsBuilder
-            choices={choices}
-            handleChoiceClicked={handleChoiceClicked}
-          />
-        </div>
-        <h2 className="font-bold">Your streak is : {score}</h2>
+        <QuizOptionsBuilder
+          choices={choices}
+          handleChoiceClicked={handleChoiceClicked}
+        />
+        <h2 className="font-bold">
+          current score : <span className="text-xl">{score}</span>
+        </h2>
         <HighscoreQuizDisplay />
         <Link
           href="/gameover"
