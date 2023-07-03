@@ -21,6 +21,7 @@ type AppContextTypes = {
   score: number;
   setScore: (e: number) => void;
   buttonRef: any;
+  bonusRef: any;
 };
 
 export const AppContext = createContext<AppContextTypes | null>(null);

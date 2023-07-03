@@ -19,6 +19,7 @@ const Quiz = () => {
     score,
     setScore,
     buttonRef,
+    bonusRef,
   } = useContext(AppContext);
 
   const [answer, setAnswer] = useState({
@@ -32,22 +33,37 @@ const Quiz = () => {
     skip: false,
     shuffle: false,
   });
+  const [guess, setGuess] = useState("");
+  const [submitButton, setSubmitButton] = useState("Submit");
 
   const handleChoiceClicked = useCallback(
-    (v) => {
-      const buttonValue = v.target.value;
-      if (buttonValue === answer.capital) {
-        resetButtonVisibility(buttonRef);
+    (v: any) => {
+      setGuess(v.target.value);
+    },
+    [alreadyGuessed, answer]
+  );
+
+  const submitGuess = () => {
+    if (submitButton === "Submit") {
+      const arr = Array.prototype.slice.call(buttonRef.current.childNodes);
+      const clicked = arr.filter((e: any) => e.id === guess)[0];
+      if (clicked.id === answer.capital) {
+        bonusRef.current.style.pointerEvents = "none";
+        clicked.style.backgroundColor = "lightgreen";
         setScore(score + 1);
-        setAlreadyGuessed((prev) => [...prev, buttonValue]);
-        createAnswer({ alreadyGuessed, setAnswer });
+        setAlreadyGuessed((prev) => [...prev, guess]);
+        setSubmitButton("next question");
       } else {
         setAlreadyGuessed([]);
         router.push("/gameover");
       }
-    },
-    [alreadyGuessed, answer]
-  );
+    } else {
+      resetButtonVisibility(buttonRef);
+      bonusRef.current.style.pointerEvents = "auto";
+      createAnswer({ alreadyGuessed, setAnswer });
+      setSubmitButton("Submit");
+    }
+  };
 
   useEffect(() => {
     createAnswer({ alreadyGuessed, setAnswer });
@@ -98,6 +114,7 @@ const Quiz = () => {
           choices={choices}
           handleChoiceClicked={handleChoiceClicked}
         />
+        <button onClick={submitGuess}>{submitButton}</button>
         <h2 className="font-bold">
           current score : <span className="text-xl">{score}</span>
         </h2>
