@@ -6,11 +6,11 @@ import HighscoreQuizDisplay from "./components/highscores/HighscoreQuizDisplay";
 import Bonuses from "./components/Bonuses/Bonuses";
 import { handleFiftyFifty } from "./components/Bonuses/bonusesLogic";
 import { resetButtonVisibility } from "../utils/resetButtonVisibility";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { AppContext } from "./context/AppContext";
+import SubmitGuess from "./components/quiz/SubmitGuess";
 
 const Quiz = () => {
-  const router = useRouter();
   const {
     difficulty,
     setDifficulty,
@@ -20,6 +20,7 @@ const Quiz = () => {
     setScore,
     buttonRef,
     bonusRef,
+    submitButtonRef,
   } = useContext(AppContext);
 
   const [answer, setAnswer] = useState({
@@ -39,27 +40,30 @@ const Quiz = () => {
   const handleChoiceClicked = useCallback(
     (v: any) => {
       setGuess(v.target.value);
+      submitButtonRef.current.style.pointerEvents = "auto";
     },
     [alreadyGuessed, answer]
   );
 
   const submitGuess = () => {
-    if (submitButton === "Submit") {
+    if (submitButton === "Submit" && guess !== "") {
       const arr = Array.prototype.slice.call(buttonRef.current.childNodes);
       const clicked = arr.filter((e: any) => e.id === guess)[0];
       if (clicked.id === answer.capital) {
         bonusRef.current.style.pointerEvents = "none";
         clicked.style.backgroundColor = "lightgreen";
+        buttonRef.current.style.pointerEvents = "none";
         setScore(score + 1);
         setAlreadyGuessed((prev) => [...prev, guess]);
-        setSubmitButton("next question");
+        setSubmitButton("Next Question");
       } else {
         setAlreadyGuessed([]);
-        router.push("/gameover");
+        Router.push("/gameover");
       }
     } else {
       resetButtonVisibility(buttonRef);
       bonusRef.current.style.pointerEvents = "auto";
+      buttonRef.current.style.pointerEvents = "auto";
       createAnswer({ alreadyGuessed, setAnswer });
       setSubmitButton("Submit");
     }
@@ -71,6 +75,7 @@ const Quiz = () => {
 
   useEffect(() => {
     buildChoices({ difficulty, answer, setChoices });
+    submitButtonRef.current.style.pointerEvents = "none";
   }, [answer, highscores, bonus.shuffle]);
 
   return (
@@ -114,7 +119,7 @@ const Quiz = () => {
           choices={choices}
           handleChoiceClicked={handleChoiceClicked}
         />
-        <button onClick={submitGuess}>{submitButton}</button>
+        <SubmitGuess submitButton={submitButton} submitGuess={submitGuess} />
         <h2 className="font-bold">
           current score : <span className="text-xl">{score}</span>
         </h2>

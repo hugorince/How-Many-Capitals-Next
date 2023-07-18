@@ -21,6 +21,7 @@ const App = ({ Component, pageProps }) => {
   const [score, setScore] = useState(0);
   const buttonRef = useRef(null);
   const bonusRef = useRef(null);
+  const submitButtonRef = useRef(null);
 
   return (
     <>
@@ -34,6 +35,7 @@ const App = ({ Component, pageProps }) => {
           setScore,
           buttonRef,
           bonusRef,
+          submitButtonRef,
         }}
       >
         <Component {...pageProps} />
