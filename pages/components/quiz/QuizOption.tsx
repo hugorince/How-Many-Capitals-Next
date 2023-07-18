@@ -10,7 +10,7 @@ const QuizOption = ({ value, handleChoiceClicked }: QuizBoxProps) => {
   return (
     <div id={value} key={value}>
       <motion.button
-        className="border border-black p-1 rounded sm:hover:bg-black sm:hover:text-white shadow-sm"
+        className="border border-black p-1 rounded sm:hover:bg-black sm:hover:text-white shadow-sm focus:bg-black focus:text-white"
         onClick={(value) => handleChoiceClicked(value)}
         value={value}
         animate={{ scale: [0, 1.2, 1] }}
