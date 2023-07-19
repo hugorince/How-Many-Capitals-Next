@@ -11,7 +11,7 @@ const Skip = ({ bonus, setSkip }: SkipProps) => {
   if (bonus.skip === false) {
     return (
       <>
-        <div className="flex flex-col items-center space-y-1">
+        <div className="flex flex-col items-center space-y-1 transform active:scale-75 transition-transform">
           <BsFillSkipForwardFill
             onClick={setSkip}
             size={24}

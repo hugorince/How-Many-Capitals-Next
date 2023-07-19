@@ -1,23 +1,34 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 
 type SubmitGuessProps = {
-  submitGuess: any;
-  submitButton: string;
+  submitGuess: () => void;
+  submitGuessButtonContent: string;
 };
 
-const SubmitGuess = ({ submitGuess, submitButton }: SubmitGuessProps) => {
-  const { submitButtonRef } = useContext(AppContext);
+const SubmitGuessButton = ({
+  submitGuess,
+  submitGuessButtonContent,
+}: SubmitGuessProps) => {
+  const { submitGuessButtonRef } = useContext(AppContext);
+
+  const [effect, setEffect] = useState(false);
 
   return (
     <button
-      className="border border-black rounded p-2"
-      ref={submitButtonRef}
-      onClick={submitGuess}
+      className={`${
+        effect && "animate-wiggle"
+      }  p-4 border border-black rounded`}
+      ref={submitGuessButtonRef}
+      onClick={() => {
+        submitGuess();
+        setEffect(true);
+      }}
+      onAnimationEnd={() => setEffect(false)}
     >
-      {submitButton}
+      {submitGuessButtonContent}
     </button>
   );
 };
 
-export default SubmitGuess;
+export default SubmitGuessButton;

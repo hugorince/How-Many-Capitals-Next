@@ -22,7 +22,7 @@ type AppContextTypes = {
   setScore: (e: number) => void;
   buttonRef: any;
   bonusRef: any;
-  submitButtonRef: any;
+  submitGuessButtonRef: any;
 };
 
 export const AppContext = createContext<AppContextTypes | null>(null);

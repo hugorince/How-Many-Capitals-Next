@@ -11,7 +11,7 @@ const FiftyFifty = ({ bonus, setFifty }: FiftyFiftyProps) => {
   if (bonus.fifty === false) {
     return (
       <>
-        <div className="flex flex-col items-center space-y-1">
+        <div className="flex flex-col items-center space-y-1 transform active:scale-75 transition-transform">
           <BsCircleHalf
             onClick={setFifty}
             size={24}

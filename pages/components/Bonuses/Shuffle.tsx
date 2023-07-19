@@ -10,7 +10,7 @@ const Shuffle = ({ setShuffle, bonus }: ShuffleProps) => {
   if (bonus.shuffle === false) {
     return (
       <>
-        <div className="flex flex-col items-center space-y-1">
+        <div className="flex flex-col items-center space-y-1 transform active:scale-75 transition-transform">
           <ImShuffle
             onClick={setShuffle}
             size={24}
