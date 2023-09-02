@@ -10,7 +10,7 @@ import LoadingIndex from "./components/loadingscreens/LoadingIndex";
 import GameLoading from "./components/loadingscreens/GameLoading";
 
 const Home = () => {
-  const { highscores, setHighScores, difficulty } = useContext(AppContext);
+  const { setHighScores } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
   const [gameLoading, setGameLoading] = useState(false);
 
