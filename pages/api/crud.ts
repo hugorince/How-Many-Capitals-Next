@@ -1,6 +1,23 @@
 import { supabase } from "../../supabase";
 
-export const fetchHighScores = async (setHighScores: any) => {
+export const fetchHighScores = async (
+  setHighScores: React.Dispatch<
+    React.SetStateAction<{
+      easy: {
+        name: string;
+        score: number;
+      };
+      medium: {
+        name: string;
+        score: number;
+      };
+      hard: {
+        name: string;
+        score: number;
+      };
+    }>
+  >
+) => {
   const { data, error } = await supabase
     .from("highscores")
     .select("score, name, difficulty")

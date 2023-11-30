@@ -4,7 +4,7 @@ import QuizOption from "./QuizOption";
 
 type QuizOptionsBuilderProps = {
   choices: string[];
-  handleChoiceClicked: any;
+  handleChoiceClicked: (v: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const QuizOptionsBuilder = ({

@@ -4,8 +4,9 @@ import { AppContext } from "../../context/AppContext";
 const setDifficulty = () => {
   const { difficulty, setDifficulty } = useContext(AppContext);
 
-  const handleClick = (e: any) => {
-    setDifficulty(e.target.value);
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLButtonElement;
+    setDifficulty(target.value);
   };
 
   return (

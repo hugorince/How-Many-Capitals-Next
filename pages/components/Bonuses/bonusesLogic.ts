@@ -5,13 +5,19 @@ type handleFiftyFiftyTypes = {
   answer: {
     capital: string;
   };
-  setBonus: any;
+  setBonus: React.Dispatch<
+    React.SetStateAction<{
+      fifty: boolean;
+      skip: boolean;
+      shuffle: boolean;
+    }>
+  >;
   bonus: {
     fifty: boolean;
     skip: boolean;
     shuffle: boolean;
   };
-  buttonRef: any;
+  buttonRef: React.MutableRefObject<any>;
 };
 
 export const handleFiftyFifty = ({

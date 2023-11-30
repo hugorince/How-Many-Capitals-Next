@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import QuizOptionsBuilder from "./components/quiz/QuizOptionsBuilder";
 import { useState, useContext, useEffect, useCallback } from "react";
@@ -40,8 +41,9 @@ const Quiz = () => {
     useState("Submit");
 
   const handleChoiceClicked = useCallback(
-    (v: any) => {
-      setGuess(v.target.value);
+    (v: React.MouseEvent<HTMLButtonElement>) => {
+      const target = v.target as HTMLButtonElement;
+      setGuess(target.value);
       submitGuessButtonRef.current.style.pointerEvents = "auto";
     },
     [alreadyGuessed, answer]
@@ -50,7 +52,7 @@ const Quiz = () => {
   const submitGuess = () => {
     if (submitGuessButtonContent === "Submit" && guess !== "") {
       const arr = Array.prototype.slice.call(buttonRef.current.childNodes);
-      const clicked = arr.filter((e: any) => e.id === guess)[0];
+      const clicked = arr.filter((e: HTMLElement) => e.id === guess)[0];
       if (clicked.id === answer.capital) {
         bonusRef.current.style.pointerEvents = "none";
         buttonRef.current.style.pointerEvents = "none";

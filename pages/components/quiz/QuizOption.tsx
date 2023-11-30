@@ -3,7 +3,7 @@ import shuffle from "../../../utils/shuffle";
 
 type QuizBoxProps = {
   value: string;
-  handleChoiceClicked: any;
+  handleChoiceClicked: (v: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const QuizOption = ({ value, handleChoiceClicked }: QuizBoxProps) => {

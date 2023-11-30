@@ -7,7 +7,12 @@ const allCities: string[] = [...cities, ...capitalsArray];
 
 type createAnswerTypes = {
   alreadyGuessed: string[];
-  setAnswer: any;
+  setAnswer: React.Dispatch<
+    React.SetStateAction<{
+      capital: string;
+      country: string;
+    }>
+  >;
 };
 
 export const createAnswer = ({
@@ -35,7 +40,7 @@ type buildChoicesTypes = {
   answer: {
     capital: string;
   };
-  setChoices: any;
+  setChoices: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 export const buildChoices = ({

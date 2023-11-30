@@ -8,7 +8,7 @@ export default function NewHighScore() {
   const { difficulty, setDifficulty, score, setScore } = useContext(AppContext);
   const [name, setName] = useState("");
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     await insertScore({ score, name, difficulty });
     setScore(0);
