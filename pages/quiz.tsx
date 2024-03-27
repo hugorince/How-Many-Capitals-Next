@@ -6,16 +6,16 @@ import {
   useCallback,
 } from "react";
 import Link from "next/link";
-import QuizOptionsBuilder from "./components/quiz/QuizOptionsBuilder";
-import { createAnswer, buildChoices } from "./components/quiz/quizLogic";
-import HighscoreQuizDisplay from "./components/highscores/HighscoreQuizDisplay";
-import Bonuses from "./components/Bonuses/Bonuses";
-import { handleFiftyFifty } from "./components/Bonuses/bonusesLogic";
+import QuizOptionsBuilder from "../components/quiz/QuizOptionsBuilder";
+import { createAnswer, buildChoices } from "../components/quiz/quizLogic";
+import HighscoreQuizDisplay from "../components/highscores/HighscoreQuizDisplay";
+import { Bonuses } from "../components/Bonuses";
+import { handleFiftyFifty } from "../utils";
 import { resetButtonVisibility } from "../utils/resetButtonVisibility";
 import Router from "next/router";
 import { AppContext } from "./context/AppContext";
-import SubmitGuessButton from "./components/quiz/SubmitGuess";
-import { goodAnswerStyle } from "./components/quiz/goodAnswerStyle";
+import SubmitGuessButton from "../components/quiz/SubmitGuess";
+import { goodAnswerStyle } from "../components/quiz/goodAnswerStyle";
 
 const Quiz = () => {
   const {

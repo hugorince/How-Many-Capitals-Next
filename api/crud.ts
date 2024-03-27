@@ -1,24 +1,11 @@
-import { supabase } from "../../supabase";
+import type { Dispatch, SetStateAction } from "react";
+import { supabase } from "../supabase";
+import { Highscores } from "../pages/context/AppContext";
 
 export const fetchHighScores = async (
-  setHighScores: React.Dispatch<
-    React.SetStateAction<{
-      easy: {
-        name: string;
-        score: number;
-      };
-      medium: {
-        name: string;
-        score: number;
-      };
-      hard: {
-        name: string;
-        score: number;
-      };
-    }>
-  >
+  setHighScores: Dispatch<SetStateAction<Highscores>>
 ) => {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("highscores")
     .select("score, name, difficulty")
     .order("score", { ascending: false });
@@ -60,6 +47,6 @@ export const insertScore = async ({
     .from("highscores")
     .insert([{ name: name, score: score, difficulty: difficulty }]);
 
-  console.log("error => ", error);
+  console.error("error => ", error);
   console.log("data => ", data);
 };

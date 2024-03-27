@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import FiftyFifty from "./FiftyFifty";
-import Shuffle from "./Shuffle";
-import Skip from "./Skip";
-import { AppContext } from "../../context/AppContext";
+import { FiftyFifty } from "./fifty-fifty";
+import { Shuffle } from "./shuffle";
+import { Skip } from "./skip";
+import { AppContext } from "../../pages/context/AppContext";
 
 type BonusesProps = {
   bonus: {
@@ -15,7 +15,12 @@ type BonusesProps = {
   setShuffle: () => void;
 };
 
-const Bonuses = ({ bonus, setFifty, setSkip, setShuffle }: BonusesProps) => {
+export const Bonuses = ({
+  bonus,
+  setFifty,
+  setSkip,
+  setShuffle,
+}: BonusesProps) => {
   const { bonusRef } = useContext(AppContext);
 
   return (
@@ -31,5 +36,3 @@ const Bonuses = ({ bonus, setFifty, setSkip, setShuffle }: BonusesProps) => {
     </>
   );
 };
-
-export default Bonuses;

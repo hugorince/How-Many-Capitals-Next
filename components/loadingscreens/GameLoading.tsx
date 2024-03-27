@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../pages/context/AppContext";
 
 const GameLoading = () => {
   const { difficulty } = useContext(AppContext);

@@ -1,12 +1,14 @@
-import shuffle from "../../../utils/shuffle";
+import type { Dispatch, MutableRefObject, SetStateAction } from "react";
+import shuffle from "./shuffle";
+import { Difficulty } from "../pages/_app";
 
 type handleFiftyFiftyTypes = {
-  difficulty: string;
+  difficulty: Difficulty;
   answer: {
     capital: string;
   };
-  setBonus: React.Dispatch<
-    React.SetStateAction<{
+  setBonus: Dispatch<
+    SetStateAction<{
       fifty: boolean;
       skip: boolean;
       shuffle: boolean;
@@ -17,7 +19,7 @@ type handleFiftyFiftyTypes = {
     skip: boolean;
     shuffle: boolean;
   };
-  buttonRef: React.MutableRefObject<any>;
+  buttonRef: MutableRefObject<HTMLButtonElement>;
 };
 
 export const handleFiftyFifty = ({

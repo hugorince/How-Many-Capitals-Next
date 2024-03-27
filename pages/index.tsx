@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import SetDifficulty from "./components/difficulty/SetDifficulty";
-import { fetchHighScores } from "./api/crud";
-import HighscoreDisplay from "./components/highscores/HighscoresDisplay";
+import { SetDifficulty } from "../components/difficulty";
+import { fetchHighScores } from "../api/crud";
+import HighscoreDisplay from "../components/highscores/HighscoresDisplay";
 import { AppContext } from "./context/AppContext";
 import { motion } from "framer-motion";
 import Router from "next/router";
-import LoadingIndex from "./components/loadingscreens/LoadingIndex";
-import GameLoading from "./components/loadingscreens/GameLoading";
+import LoadingIndex from "../components/loadingscreens/LoadingIndex";
+import GameLoading from "../components/loadingscreens/GameLoading";
 
 const Home = () => {
   const { setHighScores } = useContext(AppContext);
@@ -46,7 +46,6 @@ const Home = () => {
           </div>
           <SetDifficulty />
           <HighscoreDisplay />
-
           <button
             className="border border-black p-2 rounded hover:bg-black hover:text-white"
             onClick={handleStartQuiz}

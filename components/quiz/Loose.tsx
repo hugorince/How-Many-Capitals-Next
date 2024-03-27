@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../pages/context/AppContext";
 
 const Loose = () => {
   const { score, setScore } = useContext(AppContext);

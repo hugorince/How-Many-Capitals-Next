@@ -6,43 +6,26 @@ import {
 } from "react";
 import type { Difficulty } from "../_app";
 
+type Highscore = {
+  name: string;
+  score: number;
+};
+
+export type Highscores = {
+  easy: Highscore;
+  medium: Highscore;
+  hard: Highscore;
+};
+
 type AppContextTypes = {
-  difficulty: string;
+  difficulty: Difficulty;
   setDifficulty: Dispatch<SetStateAction<Difficulty>>;
-  highscores: {
-    easy: {
-      name: string;
-      score: number;
-    };
-    medium: {
-      name: string;
-      score: number;
-    };
-    hard: {
-      name: string;
-      score: number;
-    };
-  };
-  setHighScores: React.Dispatch<
-    React.SetStateAction<{
-      easy: {
-        name: string;
-        score: number;
-      };
-      medium: {
-        name: string;
-        score: number;
-      };
-      hard: {
-        name: string;
-        score: number;
-      };
-    }>
-  >;
+  highscores: Highscores;
+  setHighScores: Dispatch<SetStateAction<Highscores>>;
   score: number;
   setScore: Dispatch<SetStateAction<number>>;
   buttonRef: MutableRefObject<HTMLButtonElement>;
-  bonusRef: MutableRefObject<HTMLButtonElement>;
+  bonusRef: MutableRefObject<HTMLDivElement>;
   submitGuessButtonRef: MutableRefObject<HTMLButtonElement>;
 };
 

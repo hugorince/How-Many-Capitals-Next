@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../pages/context/AppContext";
 import QuizOption from "./QuizOption";
 
 type QuizOptionsBuilderProps = {

@@ -1,14 +1,14 @@
-import { useState, useContext } from "react";
+import { type SyntheticEvent, useState, useContext } from "react";
 import { insertScore } from "../../api/crud";
 import Router from "next/router";
 import Link from "next/link";
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../pages/context/AppContext";
 
 export default function NewHighScore() {
-  const { difficulty, setDifficulty, score, setScore } = useContext(AppContext);
+  const { difficulty, score, setScore } = useContext(AppContext);
   const [name, setName] = useState("");
 
-  const handleSubmit = async (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     await insertScore({ score, name, difficulty });
     setScore(0);

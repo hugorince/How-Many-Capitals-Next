@@ -1,5 +1,5 @@
 import { capitals, cities } from "./citiesData";
-import shuffle from "../../../utils/shuffle";
+import shuffle from "../../utils/shuffle";
 
 const countryArray: string[] = Object.keys(capitals);
 const capitalsArray: string[] = Object.values(capitals);

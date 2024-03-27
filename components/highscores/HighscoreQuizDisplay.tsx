@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../pages/context/AppContext";
 
 const HighscoreQuizDisplay = () => {
   const { difficulty, setDifficulty, highscores, setHighScores } =
