@@ -2,8 +2,10 @@ import React, { useRef, useState } from "react";
 import "../styles/globals.css";
 import { AppContext } from "./context/AppContext";
 
+export type Difficulty = "beginner" | "intermediate" | "expert";
+
 const App = ({ Component, pageProps }) => {
-  const [difficulty, setDifficulty] = useState("beginner");
+  const [difficulty, setDifficulty] = useState<Difficulty>("beginner");
   const [highscores, setHighScores] = useState({
     easy: {
       name: "",

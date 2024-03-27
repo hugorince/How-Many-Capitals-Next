@@ -1,8 +1,14 @@
-import { createContext } from "react";
+import {
+  type Dispatch,
+  type SetStateAction,
+  type MutableRefObject,
+  createContext,
+} from "react";
+import type { Difficulty } from "../_app";
 
 type AppContextTypes = {
   difficulty: string;
-  setDifficulty: (c: string) => void;
+  setDifficulty: Dispatch<SetStateAction<Difficulty>>;
   highscores: {
     easy: {
       name: string;
@@ -34,10 +40,10 @@ type AppContextTypes = {
     }>
   >;
   score: number;
-  setScore: (e: number) => void;
-  buttonRef: React.MutableRefObject<any>;
-  bonusRef: React.MutableRefObject<any>;
-  submitGuessButtonRef: React.MutableRefObject<any>;
+  setScore: Dispatch<SetStateAction<number>>;
+  buttonRef: MutableRefObject<HTMLButtonElement>;
+  bonusRef: MutableRefObject<HTMLButtonElement>;
+  submitGuessButtonRef: MutableRefObject<HTMLButtonElement>;
 };
 
 export const AppContext = createContext<AppContextTypes | null>(null);

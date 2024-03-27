@@ -4,14 +4,7 @@ import NewHighScore from "./components/highscores/NewHighScore";
 import { AppContext } from "./context/AppContext";
 
 const GameOver = () => {
-  const {
-    score,
-    setScore,
-    highscores,
-    setHighScores,
-    difficulty,
-    setDifficulty,
-  } = useContext(AppContext);
+  const { score, highscores, difficulty } = useContext(AppContext);
 
   return (
     <>

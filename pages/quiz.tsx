@@ -1,7 +1,12 @@
-import React from "react";
+import {
+  type MouseEvent,
+  useState,
+  useContext,
+  useEffect,
+  useCallback,
+} from "react";
 import Link from "next/link";
 import QuizOptionsBuilder from "./components/quiz/QuizOptionsBuilder";
-import { useState, useContext, useEffect, useCallback } from "react";
 import { createAnswer, buildChoices } from "./components/quiz/quizLogic";
 import HighscoreQuizDisplay from "./components/highscores/HighscoreQuizDisplay";
 import Bonuses from "./components/Bonuses/Bonuses";
@@ -15,9 +20,7 @@ import { goodAnswerStyle } from "./components/quiz/goodAnswerStyle";
 const Quiz = () => {
   const {
     difficulty,
-    setDifficulty,
     highscores,
-    setHighScores,
     score,
     setScore,
     buttonRef,
@@ -41,8 +44,8 @@ const Quiz = () => {
     useState("Submit");
 
   const handleChoiceClicked = useCallback(
-    (v: React.MouseEvent<HTMLButtonElement>) => {
-      const target = v.target as HTMLButtonElement;
+    (e: MouseEvent<HTMLButtonElement>) => {
+      const target = e.target as HTMLButtonElement;
       setGuess(target.value);
       submitGuessButtonRef.current.style.pointerEvents = "auto";
     },
@@ -83,62 +86,48 @@ const Quiz = () => {
   }, [answer, highscores, bonus.shuffle]);
 
   return (
-    <>
-      <div className="flex flex-col space-y-8 w-screen h-screen items-center justify-center p-4">
-        <Bonuses
-          bonus={bonus}
-          setFifty={() => {
-            handleFiftyFifty({
-              difficulty,
-              answer,
-              setBonus,
-              bonus,
-              buttonRef,
-            });
-          }}
-          setSkip={() => {
-            resetButtonVisibility(buttonRef);
-            setBonus({
-              fifty: bonus.fifty,
-              skip: true,
-              shuffle: bonus.shuffle,
-            });
-          }}
-          setShuffle={() =>
-            setBonus({
-              fifty: bonus.fifty,
-              skip: bonus.skip,
-              shuffle: true,
-            })
-          }
-        />
-        <h1 className="font-bold">
-          What is the capital of{" "}
-          <span className="underline decoration-blue-500">
-            {answer.country}
-          </span>{" "}
-          ?
-        </h1>
-        <QuizOptionsBuilder
-          choices={choices}
-          handleChoiceClicked={handleChoiceClicked}
-        />
-        <SubmitGuessButton
-          submitGuessButtonContent={submitGuessButtonContent}
-          submitGuess={submitGuess}
-        />
-        <h2 className="font-bold">
-          current score : <span className="text-xl">{score}</span>
-        </h2>
-        <HighscoreQuizDisplay />
-        <Link
-          href="/gameover"
-          className="italic underline decoration-red-500 cursor-pointer bottom-8 absolute"
-        >
-          End game
-        </Link>
-      </div>
-    </>
+    <div className="flex flex-col space-y-8 w-screen h-screen items-center justify-center p-4">
+      <Bonuses
+        bonus={bonus}
+        setFifty={() => {
+          handleFiftyFifty({
+            difficulty,
+            answer,
+            setBonus,
+            bonus,
+            buttonRef,
+          });
+        }}
+        setSkip={() => {
+          resetButtonVisibility(buttonRef);
+          setBonus((prev) => ({ ...prev, skip: true }));
+        }}
+        setShuffle={() => setBonus((prev) => ({ ...prev, shuffle: true }))}
+      />
+      <h1 className="font-bold">
+        What is the capital of{" "}
+        <span className="underline decoration-blue-500">{answer.country}</span>{" "}
+        ?
+      </h1>
+      <QuizOptionsBuilder
+        choices={choices}
+        handleChoiceClicked={handleChoiceClicked}
+      />
+      <SubmitGuessButton
+        submitGuessButtonContent={submitGuessButtonContent}
+        submitGuess={submitGuess}
+      />
+      <h2 className="font-bold">
+        current score : <span className="text-xl">{score}</span>
+      </h2>
+      <HighscoreQuizDisplay />
+      <Link
+        href="/gameover"
+        className="italic underline decoration-red-500 cursor-pointer bottom-8 absolute"
+      >
+        End game
+      </Link>
+    </div>
   );
 };
 
