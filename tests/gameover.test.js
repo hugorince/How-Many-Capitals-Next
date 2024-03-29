@@ -1,6 +1,6 @@
 import GameOver from "../pages/gameover";
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("GameOver", () => {
   it("renders GameOver page", () => {

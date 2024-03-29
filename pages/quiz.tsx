@@ -9,7 +9,7 @@ import Link from "next/link";
 import QuizOptionsBuilder from "../components/quiz/QuizOptionsBuilder";
 import { createAnswer, buildChoices } from "../components/quiz/quizLogic";
 import HighscoreQuizDisplay from "../components/highscores/HighscoreQuizDisplay";
-import { Bonuses } from "../components/Bonuses";
+import { Bonuses } from "../components/bonuses";
 import { handleFiftyFifty } from "../utils";
 import { resetButtonVisibility } from "../utils/resetButtonVisibility";
 import Router from "next/router";
