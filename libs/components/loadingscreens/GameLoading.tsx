@@ -1,9 +1,9 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { AppContext } from "../../pages/context/AppContext";
+import { useGlobalContext } from "../../providers/global-context";
 
 const GameLoading = () => {
-  const { difficulty } = useContext(AppContext);
+  const { difficulty } = useGlobalContext();
   const [content, setContent] = useState(`${difficulty} mode`);
 
   useEffect(() => {

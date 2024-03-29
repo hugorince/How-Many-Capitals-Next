@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { AppContext } from "../../pages/context/AppContext";
+import { useState } from "react";
+import { useGlobalContext } from "../../providers/global-context";
 
 type SubmitGuessProps = {
   submitGuess: () => void;
@@ -10,7 +10,7 @@ const SubmitGuessButton = ({
   submitGuess,
   submitGuessButtonContent,
 }: SubmitGuessProps) => {
-  const { submitGuessButtonRef } = useContext(AppContext);
+  const { submitGuessButtonRef } = useGlobalContext();
 
   const [effect, setEffect] = useState(false);
 

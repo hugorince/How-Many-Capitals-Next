@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import Loose from "../components/quiz/Loose";
-import NewHighScore from "../components/highscores/NewHighScore";
-import { AppContext } from "./context/AppContext";
+import Loose from "../libs/components/quiz/Loose";
+import NewHighScore from "../libs/components/highscores/NewHighScore";
+import { useGlobalContext } from "../libs/providers/global-context";
 
 const GameOver = () => {
-  const { score, highscores, difficulty } = useContext(AppContext);
+  const { score, highscores, difficulty } = useGlobalContext();
 
   return (
     <>

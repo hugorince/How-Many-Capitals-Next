@@ -1,13 +1,13 @@
-import { type MouseEvent, useContext } from "react";
-import { AppContext } from "../../pages/context/AppContext";
-import { Difficulty } from "../../pages/_app";
+import { type MouseEvent } from "react";
+import { useGlobalContext } from "../../providers/global-context";
+import { Difficulty } from "../../providers/global-context";
 
 interface DifficultyButtonProps {
   difficultyProp: Difficulty;
 }
 
 export const DifficultyButton = ({ difficultyProp }: DifficultyButtonProps) => {
-  const { difficulty, setDifficulty } = useContext(AppContext);
+  const { difficulty, setDifficulty } = useGlobalContext();
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;

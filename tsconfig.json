@@ -18,8 +18,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "utils/HighScoreContext.js",
-    "utils/DifficultyContext.js",
+    "libs/utils/HighScoreContext.js",
+    "libs/utils/DifficultyContext.js",
     "pages/_document.js"
   ],
   "exclude": ["node_modules"]

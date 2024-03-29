@@ -1,6 +1,6 @@
 import type { Dispatch, MutableRefObject, SetStateAction } from "react";
 import shuffle from "./shuffle";
-import { Difficulty } from "../pages/_app";
+import { Difficulty } from "../providers/global-context";
 
 type handleFiftyFiftyTypes = {
   difficulty: Difficulty;
@@ -19,7 +19,7 @@ type handleFiftyFiftyTypes = {
     skip: boolean;
     shuffle: boolean;
   };
-  buttonRef: MutableRefObject<HTMLButtonElement>;
+  buttonRef: MutableRefObject<any>;
 };
 
 export const handleFiftyFifty = ({

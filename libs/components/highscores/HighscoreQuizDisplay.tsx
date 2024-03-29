@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { AppContext } from "../../pages/context/AppContext";
+import { useGlobalContext } from "../../providers/global-context";
 
 const HighscoreQuizDisplay = () => {
-  const { difficulty, setDifficulty, highscores, setHighScores } =
-    useContext(AppContext);
+  const { difficulty, highscores } = useGlobalContext();
   return (
     <>
       <div className="flex justify-center border border-black rounded relative pl-12 pr-12 pb-2 pt-2">

@@ -1,21 +1,15 @@
-import {
-  type MouseEvent,
-  useState,
-  useContext,
-  useEffect,
-  useCallback,
-} from "react";
+import { type MouseEvent, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import QuizOptionsBuilder from "../components/quiz/QuizOptionsBuilder";
-import { createAnswer, buildChoices } from "../components/quiz/quizLogic";
-import HighscoreQuizDisplay from "../components/highscores/HighscoreQuizDisplay";
-import { Bonuses } from "../components/bonuses";
-import { handleFiftyFifty } from "../utils";
-import { resetButtonVisibility } from "../utils/resetButtonVisibility";
+import QuizOptionsBuilder from "../libs/components/quiz/QuizOptionsBuilder";
+import { createAnswer, buildChoices } from "../libs/components/quiz/quizLogic";
+import HighscoreQuizDisplay from "../libs/components/highscores/HighscoreQuizDisplay";
+import { Bonuses } from "../libs/components/bonuses";
+import { handleFiftyFifty } from "../libs/utils";
+import { resetButtonVisibility } from "../libs/utils/resetButtonVisibility";
 import Router from "next/router";
-import { AppContext } from "./context/AppContext";
-import SubmitGuessButton from "../components/quiz/SubmitGuess";
-import { goodAnswerStyle } from "../components/quiz/goodAnswerStyle";
+import { useGlobalContext } from "../libs/providers/global-context";
+import SubmitGuessButton from "../libs/components/quiz/SubmitGuess";
+import { goodAnswerStyle } from "../libs/components/quiz/goodAnswerStyle";
 
 const Quiz = () => {
   const {
@@ -26,7 +20,7 @@ const Quiz = () => {
     buttonRef,
     bonusRef,
     submitGuessButtonRef,
-  } = useContext(AppContext);
+  } = useGlobalContext();
 
   const [answer, setAnswer] = useState({
     capital: "",

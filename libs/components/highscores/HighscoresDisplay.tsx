@@ -1,8 +1,8 @@
-import { AppContext } from "../../pages/context/AppContext";
-import { useContext } from "react";
+import { useGlobalContext } from "../../providers/global-context";
 
 const HighscoreDisplay = () => {
-  const { highscores, difficulty } = useContext(AppContext);
+  const { highscores, difficulty } = useGlobalContext();
+
   return (
     <>
       <div className="flex flex-col space-y-2 items-center">

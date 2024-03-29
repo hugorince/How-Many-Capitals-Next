@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { FiftyFifty } from "./fifty-fifty";
 import { Shuffle } from "./shuffle";
 import { Skip } from "./skip";
-import { AppContext } from "../../pages/context/AppContext";
+import { useGlobalContext } from "../../providers/global-context";
 
 type BonusesProps = {
   bonus: {
@@ -21,7 +20,7 @@ export const Bonuses = ({
   setSkip,
   setShuffle,
 }: BonusesProps) => {
-  const { bonusRef } = useContext(AppContext);
+  const { bonusRef } = useGlobalContext();
 
   return (
     <>

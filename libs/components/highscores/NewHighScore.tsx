@@ -1,11 +1,11 @@
 import { type SyntheticEvent, useState, useContext } from "react";
-import { insertScore } from "../../api/crud";
+import { insertScore } from "../../utils/crud";
 import Router from "next/router";
 import Link from "next/link";
-import { AppContext } from "../../pages/context/AppContext";
+import { useGlobalContext } from "../../providers/global-context";
 
 export default function NewHighScore() {
-  const { difficulty, score, setScore } = useContext(AppContext);
+  const { difficulty, score, setScore } = useGlobalContext();
   const [name, setName] = useState("");
 
   const handleSubmit = async (e: SyntheticEvent) => {

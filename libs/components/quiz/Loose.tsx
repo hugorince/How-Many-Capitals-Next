@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useContext } from "react";
-import { AppContext } from "../../pages/context/AppContext";
+import { useGlobalContext } from "../../providers/global-context";
 
 const Loose = () => {
-  const { score, setScore } = useContext(AppContext);
+  const { score, setScore } = useGlobalContext();
 
   const handleClick = () => {
     setScore(0);
